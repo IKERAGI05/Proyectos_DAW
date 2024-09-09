@@ -1,0 +1,513 @@
+<html>
+<body>
+    <script type="text/javascript">
+       
+       var datos=[];
+
+      var patron_textos=/^[A-Z][a-z]{1,24}$/; //patrones para distintos campos
+      var patron_nif= /^[0-9]{8}[A-Z]$/;
+      var patron_codP=/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/;
+      var patron_tlf=/^(9|6|7)\d{8}$/;
+      var patron_textoNormal=/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+    
+
+      
+        function validarTextos(cadena){ //funcion para validar textos cortos
+
+       if(!patron_textos.test(cadena)){
+       	
+    		return false;
+
+       	}
+       	return true;
+       }
+       function validarNif(nif){ //funcion para validar el nif
+        if(!patron_nif.test(nif)){
+       	
+           return false;
+
+          }
+          return true;
+      }
+      function validarCodPostal(cod){ //funcion para validar el CP
+        if(!patron_codP.test(cod)){
+       	
+           return false;
+
+          }
+          return true;
+
+      }
+      function validarTlf(tlf){ //funcion para validar el telefono
+        if(!patron_tlf.test(tlf)){
+       	
+           return false;
+
+          }
+          return true;
+
+      }
+      function validarTextosLargos(texto){ //funcion para validar textos mas largos como la dirección
+
+        if(!patron_textoNormal.test(texto)){
+            return false;
+        }
+        return true;
+      }
+
+      function valueRadios(variable){ //funcion para sacar el valor del radio seleccionado
+        var valor;
+        for(x=0;x<variable.length;x++){
+            if(variable[x].checked){
+
+               valor=variable[x].value;
+            }
+
+        }
+        return valor;
+
+      }
+
+      function deshabilitar(){ //funcion para deshabilitar los campos que dependen de los radios.
+        
+        hijos= document.getElementById('hijos');
+        vehiculo= document.getElementById('vehiculo');
+        nHijos= document.getElementById('nHijos');
+        nVehiculos= document.getElementById('nVehiculos');
+        if(document.getElementById('noH').checked){
+            nHijos.disabled=true;
+            document.getElementById('nHijos').value="";
+        }else{
+           nHijos.disabled=false;
+        }
+
+        if(document.getElementById('noV').checked){
+            nVehiculos.disabled=true;
+            document.getElementById('nVehiculos').value="";
+        }else{
+           nVehiculos.disabled=false;
+        }
+      }
+
+      function blanco(cadena){ //funcion para que los campos invalidados se muestren con un '-'
+        cadena=cadena.trim();
+        if(cadena.length==0){
+            cadena= "-";
+
+        }
+        return cadena;
+      }
+
+    
+
+      function insertar(){ //funcion que controla los campos con los metodos anteriores
+      
+        //inicialización
+        var bVisualizar= document.getElementById('visualizar');
+        var vFecha= document.getElementById('fecha').value;
+        var vNif= document.getElementById('nif').value;
+        var vNombre= document.getElementById('nombre').value;
+        var vApel1= document.getElementById('apel1').value;
+        var vApel2= document.getElementById('apel2').value;
+        var vDireccion= document.getElementById('direccion').value;
+        var vCodP= document.getElementById('codP').value;
+        var vTlf= document.getElementById('tlf').value;
+        var vEstadoC= document.getElementById('estadoC').value;
+        var vHijos= document.getElementsByName('hijos');
+
+        var valorHijos= valueRadios(vHijos);
+
+        var vNHijos= document.getElementById('nHijos').value;
+        var vEstadoL= document.getElementById('estadoL').value;
+        var vSector= document.getElementById('sector').value;
+        var vDomicilio= document.getElementById('domicilio').value;
+        var vVehiculo= document.getElementsByName('vehiculos');
+
+        var valorVehiculos= valueRadios(vVehiculo);
+
+        var vNVehiculos= document.getElementById('nVehiculos').value;
+        var vVacaciones= document.getElementsByName('vacaciones');
+
+        var valorVacaciones= valueRadios(vVacaciones);
+        //fin inicialización
+
+        vNHijos= blanco(vNHijos); //Usamos la funcion de los blancos.
+
+        vNVehiculos= blanco(vNVehiculos);
+      
+
+
+// bloque de control de los campos utilizando las funciones de patrones.
+        if(vFecha.length==0){
+            alert("La FECHA no es correcta.");
+            document.getElementById('fecha').value="";
+            document.getElementById('fecha').focus();
+        }else if(!validarNif(vNif)){
+            alert("El NIF no es correcto.");
+            document.getElementById('fecha').disabled=true;
+
+            document.getElementById('nif').value="";
+            document.getElementById('nif').focus();
+
+        }else if(!validarTextos(vNombre)){
+            alert("El NOMBRE no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+
+            document.getElementById('nombre').value="";
+            document.getElementById('nombre').focus();
+
+        }else if(!validarTextos(vApel1)){
+            alert("El 1. APELLIDO no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+
+            document.getElementById('apel1').value="";
+            document.getElementById('apel1').focus();
+
+        }else if(!validarTextos(vApel2)){
+            alert("El 2. APELLIDO no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+
+            document.getElementById('apel2').value="";
+            document.getElementById('apel2').focus();
+
+        }else if(!validarTextosLargos(vDireccion)){
+            alert("La DIRECCION no es valida.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+
+            document.getElementById('direccion').value="";
+            document.getElementById('direccion').focus();
+
+        }else if(!validarCodPostal(vCodP)){
+            alert("El CODIGO POSTAL es inexistente.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+
+            document.getElementById('codP').value="";
+            document.getElementById('codP').focus();
+
+        }else if(!validarTlf(vTlf)){
+            alert("El TELEFONO no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+            document.getElementById('codP').disabled=true;
+
+            document.getElementById('tlf').value="";
+            document.getElementById('tlf').focus();
+
+        }else if(vNHijos<1){
+            alert("Indica el numero de HIJOS.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+            document.getElementById('codP').disabled=true;
+            document.getElementById('tlf').disabled=true;
+
+            document.getElementById('nHijos').value="";
+            document.getElementById('nHijos').focus();
+        
+        
+        
+        }else if(!validarTextos(vSector)){
+            alert("El SECTOR no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+            document.getElementById('codP').disabled=true;
+            document.getElementById('tlf').disabled=true;
+            document.getElementById('nHijos').disabled=true;
+
+            document.getElementById('sector').value="";
+            document.getElementById('sector').focus();
+
+        }else if(!validarTextos(vDomicilio)){
+            alert("El DOMICILIO no es correcto.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+            document.getElementById('codP').disabled=true;
+            document.getElementById('tlf').disabled=true;
+            document.getElementById('nHijos').disabled=true;
+            document.getElementById('sector').disabled=true;
+
+            document.getElementById('domicilio').value="";
+            document.getElementById('domicilio').focus();
+
+        }else if(vNVehiculos<1){
+            alert("Indica el numero de VEHICULOS.");
+            document.getElementById('fecha').disabled=true;
+            document.getElementById('nif').disabled=true;
+            document.getElementById('nombre').disabled=true;
+            document.getElementById('apel1').disabled=true;
+            document.getElementById('apel2').disabled=true;
+            document.getElementById('direccion').disabled=true;
+            document.getElementById('codP').disabled=true;
+            document.getElementById('tlf').disabled=true;
+            document.getElementById('nHijos').disabled=true;
+            document.getElementById('sector').disabled=true;
+            document.getElementById('domicilio').disabled=true;
+
+            document.getElementById('nVehiculos').value="";
+            document.getElementById('nVehiculos').focus();
+        
+        
+        
+        }else{ //aqui si esta todo correcto creamos el objeto con los campos y lo metemos en el array.
+            alert("Cliente " + vNombre + " "+ vApel1 + " "+ vApel2 + " resgistrado correctamente.");
+           var cliente= new Object();
+            cliente.nif= vNif;
+            cliente.nombre= vNombre;
+            cliente.apel1= vApel1;
+            cliente.apel2= vApel2;
+            cliente.direccion= vDireccion;
+            cliente.codP= vCodP;
+            cliente.tlf= vTlf;
+            cliente.estadoC = vEstadoC;
+            cliente.hijos = valorHijos;
+            cliente.nHijos= vNHijos;
+            cliente.estadoL= vEstadoL;
+            cliente.sector = vSector;
+            cliente.domicilio = vDomicilio;
+            cliente.vehiculo = valorVehiculos;
+            cliente.vehiculos = vNVehiculos;
+            cliente.vacaciones = valorVacaciones;
+        
+
+            datos.push(cliente);
+
+            //despues de insertar todos los valores dejamos los campos vacios y operativos.
+
+            document.getElementById('fecha').value="";
+            document.getElementById('nif').value="";
+            document.getElementById('nombre').value="";
+            document.getElementById('apel1').value="";
+            document.getElementById('apel2').value="";
+            document.getElementById('direccion').value="";
+            document.getElementById('codP').value="";
+            document.getElementById('tlf').value="";
+            document.getElementById('sector').value="";
+            document.getElementById('domicilio').value="";
+            document.getElementById('nHijos').value="";
+            document.getElementById('nVehiculos').value="";
+            
+            document.getElementById('fecha').disabled=false;
+            document.getElementById('nif').disabled=false;
+            document.getElementById('nombre').disabled=false;
+            document.getElementById('apel1').disabled=false;
+            document.getElementById('apel2').disabled=false;
+            document.getElementById('direccion').disabled=false;
+            document.getElementById('codP').disabled=false;
+            document.getElementById('tlf').disabled=false;
+            document.getElementById('sector').disabled=false;
+
+            document.getElementById('fecha').focus();
+            
+
+        }
+        
+      }
+
+      function mostrar(){ //funcion para mostrar lo recogido.
+       
+        var encabezado ="<table border=1>"+
+                "<tr>"+
+               "<th>NIF</th>" +
+               "<th>Nombre</th>"+
+                "<th>1.Apellido</th>"+
+                "<th>2.Apellido</th>"+
+                "<th>Dirección</th>"+
+                "<th>Código Postal</th>"+
+                "<th>Teléfono</th>"+
+                "<th>Estado Civil</th>"+
+                "<th>Hijos (S/N)</th>"+
+                "<th>Nº de hijos</th>"+
+                "<th>Estado Labrolar</th>"+
+                "<th>Sector Laboral</th>"+
+                "<th>Domicilio</th>"+
+                "<th>Vehiculo (S/N)</th>"+
+                "<th>Nº de Vehiculos</th>"+
+                "<th>Vacaciones</th>"+
+            "</tr>";
+        document.write(encabezado);
+        for(x=0;x<datos.length;x++){
+            
+            document.write("<tr>");
+            
+            document.write("<td>"+datos[x].nif+"</td>");
+            
+            
+            
+            document.write("<td>"+datos[x].nombre+"</td>");
+          
+            
+            
+            document.write("<td>"+datos[x].apel1+"</td>");
+          
+            
+           
+            document.write("<td>"+datos[x].apel2+"</td>");
+          
+            
+            
+            document.write("<td>"+datos[x].direccion+"</td>");
+         
+           
+            
+            document.write("<td>"+datos[x].codP+"</td>");
+          
+          
+            
+            document.write("<td>"+datos[x].tlf+"</td>");
+           
+           
+            
+            document.write("<td>"+datos[x].estadoC+"</td>");
+            
+            
+            
+            document.write("<td>"+datos[x].hijos+"</td>");
+        
+            
+            
+            document.write("<td>"+datos[x].nHijos+"</td>");
+            
+            
+            document.write("<td>"+datos[x].estadoL+"</td>");
+            
+         
+            
+            document.write("<td>"+datos[x].sector+"</td>");
+           
+           
+            
+            document.write("<td>"+datos[x].domicilio+"</td>");
+     
+            
+            
+            document.write("<td>"+datos[x].vehiculo+"</td>");
+      
+           
+            
+            document.write("<td>"+datos[x].vehiculos+"</td>");
+           
+          
+            
+            document.write("<td>"+datos[x].vacaciones+"</td>");
+            document.write("</tr>");
+           
+            
+            
+
+        }
+       
+        document.write("</table>");
+
+      }
+   	
+   	
+       
+    </script>
+
+    <form>
+
+        <div id="capa" style="border-style: solid; border-color: black; width: 50%; height: 135%;margin-left: 25vw;">
+            <p style="margin-left: 8vw;">
+            FECHA: <input type="date" name="fecha"  id="fecha" 
+                style="margin-left:1.6vw; margin-top:5vh;">
+                <br><br>
+            NIF: <input type="text" name="nif"  id="nif">
+            <br><br>
+            NOMBRE: <input type="text" name="nombre"  id="nombre"
+            >
+            <br><br>
+            APELLIDO 1: <input type="text" name="apel1" id="apel1">
+            <br><br>
+            APELLIDO 2: <input type="text" name="apel2" id="apel2">
+            <br><br>
+            DIRECCIÓN: <input type="text" name="direccion" id="direccion">
+            <br><br>
+            CÓDIGO POSTAL: <input type="text" name="codP" id="codP">
+            <br><br>
+            TELÉFONO MOVIL/FIJO: <input type="number" name="tlf" id="tlf">
+            <br><br>
+            ESTADO CIVIL: <select name="estadoC" id="estadoC">
+                <option value="casado" selected>Casado</option>
+                <option value="pareja">En pareja</option>
+                <option value="soltero">Solter@</option>
+                <option value="separado">Separad@</option>
+                <option value="divorciado">Divorciad@</option>
+                <option value="viudo">Viud@</option>
+
+            </select>
+            <br><br>
+            TIENE HIJOS (S/N): <input type="radio" name="hijos" id="siH" value="Si" checked onclick="deshabilitar()">S &nbsp
+            <input type="radio" name="hijos" id="noH" value="No" onclick="deshabilitar()">N
+            <br><br>
+            Nº HIJOS: <input type="number" name="nHijos" id="nHijos" min="1">
+            <br><br>
+            ESTADO LABORAL: <select name="estadoL" id="estadoL">
+                <option value="Autónomo o independiente" selected>Autónomo o independiente</option>
+                <option value="Asalariado">Asalariado</option>
+                <option value="Asalariado a tiempo completo">Asalariado a tiempo completo</option>
+                <option value="Asalariado a tiempo parcial">Asalariado a tiempo parcial</option>
+                <option value="Empresaria con asalariados">Empresaria con asalariados</option>
+
+            </select>
+            <br><br>
+            SECTOR EN EL QUE TRABAJA: <input type="text" name="sector" id="sector">
+            <br><br>
+            DOMICILIO: <input type="text" name="domicilio" id="domicilio">
+            <br><br>
+            VEHICULO (S/N): <input type="radio" name="vehiculos" id="siV" value="Si" checked onclick="deshabilitar()">S &nbsp
+            <input type="radio" name="vehiculos" id="noV" value="No" onclick="deshabilitar()">N
+            </select>
+            <br><br>
+            Nº DE VEHICULOS: <input type="number" name="nVehiculos" id="nVehiculos" min="1">
+            <br><br>
+            VACACIONES :<input type="radio" name="vacaciones" id="siVa" value="Si" checked>S &nbsp
+            <input type="radio" name="vacaciones" id="noVa" value="No">N
+            <br><br>
+            <input type="button" name="registrar" value="registrar" onclick="insertar()"
+             style="margin-left: 10vw;">&nbsp
+             <input type="button" name="visualizar" value="visualizar" onclick="mostrar()"
+             style="margin-left: 10vw;">
+            </p>
+
+        </div>
+
+
+    </form>
+
+    
+   
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style>
+            #capaBotones1{
+              
+                
+                position: absolute;
+                margin-top: 10%;
+               margin-left: 30%;
+            }
+          .titulo{
+            text-align: center;
+            color: white;
+            font-size: xx-large;
+            font-style: bold;
+
+          }
+            #altas, #bajas,#modificaciones,#consultas{
+                display: none;
+                position: absolute;
+               
+                width: 100%;
+            }
+          
+            .tablaConsulta{
+
+                background-color: lightgrey;
+                border-color: black;
+                margin-left: 15%;
+                margin-top: 5%;
+                font-size: small;
+                width: 70%;
+               
+            }
+            .crud{
+                margin-left: 35%;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script>window.open()</script>
+        
+
+        <form>
+            
+            
+                <div id="capaBotones1">
+                <div  class="badge text-bg-info"   class="container text-center"   >
+                    <div class="row" style="margin-top: 10%;">
+                    <span class="titulo"><b>C.R.U.D</b></span>
+                </div>
+                    <div class="row" style="margin-top: 5%; ">
+                      <div  class="col">
+                        <button type="button" name="bAltas" id="bAltas" onclick="mostrarAltas()" class="btn btn-primary">Agregar</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" type="button" name="bAltas" id="bBajas" onclick="mostrarBajas()" class="btn btn-primary">Eliminar</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" name="bAltas" id="bConsultas" onclick="mostrarConsulta()" class="btn btn-primary">Consultar</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" name="bAltas" id="bModificar" onclick="mostrarModificaciones()" class="btn btn-primary">Modificar</button>
+                    </div>
+                </div>
+                    <div class="row" style="margin-top: 5% ; margin-bottom: 5%; margin-right: 2%;">
+                        <div class="col">
+                        
+                        </div>
+                        <div class="col" >
+                            <button type="button" name="bCerrar" id="bCerrar" onclick="salir()" class="btn btn-primary"  style="background-color: #DC3545;">X</button>
+                        </div>
+                        <div class="col" >
+                               
+                     </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="altas">
+                <div class="crud">
+                <form>
+
+                    <div class="badge text-bg-light">
+                        <p style="margin-left: 8vw;">
+                       
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">NIF</label>
+                                <input class="form-control form-control-sm" type="text" name="nif"  id="nif">
+                            </div>  
+                        
+                        <br><br>
+                     <div id="form2" style="display: none;">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">APELLIDO 1</label>
+                            <input class="form-control form-control-sm" type="text" name="apel1" id="apel1">
+                        </div> 
+                        <br><br>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">APELLIDO 2</label>
+                            <input class="form-control form-control-sm" type="text" name="apel2" id="apel2">
+                        </div>   
+                        <br><br>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">NOMBRE</label>
+                            <input class="form-control form-control-sm" type="text" name="nombre"  id="nombre">
+                        </div>  
+                        <br><br>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">DEPARTAMENTO</label>
+                            <input class="form-control form-control-sm" type="text" name="departamento" id="departamento">
+                        </div> 
+                        <br><br>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">TELEFONO</label>
+                             <input class="form-control form-control-sm" type="number" name="tlf" id="tlf">
+                            </div>
+                        <br><br>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">EMAIL</label>
+                            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+                          </div>
+                        <br><br>
+                        ANTIGÜEDAD <select id="antiguedad"  class="form-select" aria-label=".form-select-sm example" style="margin-top: 4%;">
+                                <option selected value="menos de 1 anyo">menos de 1 año</option>
+                                <option value="1-3 años">1-3 años</option>
+                                <option value="3-5 años">3-5 años</option>
+                                <option value="5-10 años">5-10 años</option>
+                                <option value="mas de 10 años">mas de 10 años</option>
+                        </select>
+                    </div>
+                        <br><br>
+                        <div class="container text-center">
+                            <div class="row">
+                              <div class="col">
+                                <button type="button" name="registrar" id="reg"  class="btn btn-primary btn-sm" onclick="darDeAlta()" style="display: none;">Registrar</button>
+                                <button type="button" name="validar" id="valid"  class="btn btn-primary btn-sm" onclick="validarForm()" style="background-color: green; display: block;">Validar</button>
+                              </div>
+                              <div class="col">
+                                <button type="button" name="volver"  class="btn btn-primary btn-sm" onclick="volverMenu()" style="background-color: #DC3545;">Volver</button>
+                                
+                            </div>
+                          </div>
+                        </div> 
+                        </p>  
+                    </div>
+            
+                  
+            
+                </form>
+            </div>
+            </div>
+            <div id="bajas">
+                <div class="crud">
+                <form>
+                    <div class="badge text-bg-light">
+                        <p style="margin-left: 8vw;">
+                       
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">NIF</label>
+                                <input class="form-control form-control-sm" type="text" name="nifBaja"  id="nifBaja">
+                            </div>
+                            <div class="container text-center">
+                                <div class="row">
+                                  <div class="col">
+                                    <button type="button" name="eliminar" id="eliminar"  class="btn btn-primary btn-sm" onclick="darDeBaja()" style="display: block;">Eliminar</button>
+                                  </div>
+                                  <div class="col">
+                                    <button type="button" name="volverBaja"  class="btn btn-primary btn-sm" onclick="volverMenu()" style="background-color: #DC3545;">Volver</button>
+                                    
+                                </div>
+                              </div>
+                            </div>   
+                        
+                        <br><br>
+                        </p>
+                    </div>
+
+                </form>
+
+            </div>
+            </div>
+            <div id="modificaciones">
+
+                <div class="crud">
+                    <form>
+                        <div class="badge text-bg-light">
+                            <p style="margin-left: 8vw;">
+                           
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">NIF</label>
+                                    <input class="form-control form-control-sm" type="text" name="nifMod"  id="nifMod">
+                                </div>
+                                <div id="mod2" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">DEPARTAMENTO</label>
+                                    <input class="form-control form-control-sm" type="text" name="departamentoMod"  id="departamentoMod">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">TELEFONO</label>
+                                    <input class="form-control form-control-sm" type="text" name="telefonoMod"  id="telefonoMod">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">MAIL</label>
+                                    <input class="form-control form-control-sm" type="email" name="mailMod"  id="mailMod">
+                                </div>
+                            </div>
+                                <div class="container text-center">
+                                    <div class="row">
+                                      <div class="col">
+                                        <button type="button" name="validarMod" id="validarMod"  class="btn btn-primary btn-sm" onclick="mostrarMod()" style="display: block; background-color: green;">Validar</button>
+                                     
+                                        <button type="button" name="modificar" id="modificar"  class="btn btn-primary btn-sm" onclick="modificarDatos()" style="display: none;">Modificar</button>
+                                      </div>
+                                      <div class="col">
+                                        <button type="button" name="volverBaja"  class="btn btn-primary btn-sm" onclick="volverMenu()" style="background-color: #DC3545;">Volver</button>
+                                        
+                                    </div>
+                                  </div>
+                                </div>   
+                            
+                            <br><br>
+                            </p>
+                        </div>
+    
+                    </form>
+    
+                </div>
+
+            </div>
+            <div id="consultas">
+                <div class="crud">
+                <form>
+                    <div class="badge text-bg-light">
+                        <p style="margin-left: 8vw;">
+                       
+                            <div class="mb-3" id="nifConsultas" style="display: none;">
+                                <label for="exampleFormControlInput1" class="form-label">NIF</label>
+                                <input class="form-control form-control-sm" type="text" name="nifCons"  id="nifCons">
+                            </div>
+                            <div class="mb-3" id="apelConsultas" style="display: none;">
+                                <label for="exampleFormControlInput1" class="form-label">APELLIDO</label>
+                                <input class="form-control form-control-sm" type="text" name="apelCons" id="apelCons">
+                            </div> 
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="opcion" id="opcionNif" onclick="seleccionar()">
+                                <label class="form-check-label" for="opcionNif">
+                                  Nif
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="opcion" id="opcionApellido" onclick="seleccionar()">
+                                <label class="form-check-label" for="opcionApellido">
+                                  Apellido
+                                </label>
+                              </div>
+                            <div class="container text-center">
+                                <div class="row">
+                                  <div class="col">
+                                    <button type="button" name="consultarNif" id="consultarNif" class="btn btn-primary btn-sm" onclick="consultarPorNif()" style="display: none;">Consultar</button>
+                                    <button type="button" name="consultarApel" id="consultarApel" class="btn btn-primary btn-sm" onclick="consultarPorApel()" style="display: none;">Consultar</button>
+                                  </div>
+                                  <div class="col">
+                                    <button type="button" name="volverCons"  class="btn btn-primary btn-sm" onclick="volverMenu()" style="background-color: #DC3545;">Volver</button>
+                                    
+                                </div>
+                              </div>
+                            </div>   
+                        
+                        <br><br>
+                        </p>
+                    </div>
+                    
+                </form>
+            </div>
+                <div id="capaTabla" style="display:none;">
+
+
+
+                </div>
+            
+
+            </div>
+            
+
+
+            <script>
+                //bloque funciones y inicializaciones de utilidad
+                var datos=[{'nif': '12345678H', 'nombre': 'Josu', 'apel1':'Mellado',
+                 'apel2': 'Apraiz', 'departamento': 'Informatica', 'tlf': '688097865', 
+                 'mail':'josu@gmail.com', 'antiguedad':'5-10 años'},{'nif': '87654321A', 'nombre': 'Ander', 'apel1':'Mellado',
+                 'apel2': 'Apraiz', 'departamento': 'RRHH', 'tlf': '711326723', 
+                 'mail':'ander@gmail.com', 'antiguedad':'1-3 años'}];
+
+                  var tabla= '<table class="tablaConsulta" border="1" style="text-align:center;">'+
+                    '<thead>'+
+                        '<tr>'+ 
+                        '<th>NIF</th>'+
+                        '<th>NOMBRE</th>'+ 
+                           '<th>1. APELLIDO</th>'+
+                           '<th>2. APELLIDO</th>'+
+                          '<th>DEPARTAMENTO</th>'+
+                           '<th>TELEFONO</th>'+
+                            '<th>EMAIL</th>'+
+                           '<th>ANTIGÜEDAD</th>'+
+                           '</thead>'+
+                            '</tr>';
+                        
+
+                var patron_textos=/^[A-Z][a-z]{1,24}$/; //patrones para distintos campos
+                var patron_nif= /^[0-9]{8}[A-Z]$/;
+                var patron_tlf=/^(6|7)\d{8}$/;
+                var patron_textoNormal=/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+
+                function volverMenu(){
+                    document.getElementById('capaBotones1').style.display="block";
+                    document.getElementById('consultas').style.display="none";
+                    document.getElementById('bajas').style.display="none";
+                    document.getElementById('modificaciones').style.display="none";
+                    document.getElementById('altas').style.display="none";
+                    document.getElementById('capaTabla').style.display="none";
+                    document.getElementById('capaTabla').style.display="none";
+                    document.getElementById('nifCons').value="";
+                    document.getElementById('nif').value="";
+                   
+                    document.getElementById('apel1').value="";
+                    document.getElementById('apel2').value="";
+                    document.getElementById('nombre').value="";
+                    document.getElementById('departamento').value="";
+                    document.getElementById('tlf').value="";
+                    document.getElementById('email').value="";
+                    document.getElementById('nifBaja').value="";
+                    document.getElementById('nifConsultas').style.display="none";
+                        document.getElementById('consultarNif').style.display="none";
+                        document.getElementById('apelConsultas').style.display="none";
+                        document.getElementById('consultarApel').style.display="none";
+                        document.getElementById('opcionNif').checked=false;
+                        document.getElementById('opcionApellido').checked=false;
+
+                        nif= document.getElementById('nifMod').value="";
+                        departamento= document.getElementById('mailMod').value="";
+                         departamento= document.getElementById('telefonoMod').value="";
+                          departamento= document.getElementById('departamentoMod').value="";
+                          document.getElementById('mod2').style.display="none";
+                          document.getElementById('modificar').style.display="none";
+                           document.getElementById('validarMod').style.display="block";
+                          document.getElementById('nifMod').disabled=false;
+                            departamento= document.getElementById('telefonoMod').disabled=false;
+                          departamento= document.getElementById('departamentoMod').disabled=false;
+
+                }
+
+
+                function validarNif(nif){
+                    if(!patron_nif.test(nif)){
+                        return false;
+                    }
+                    return true;
+
+                }
+                function validarTlf(tlf){
+                    if(!patron_tlf.test(tlf)){
+                        return false;
+                    }
+                    return true;
+
+                }
+                function validarTextos(texto){
+                    if(!patron_textos.test(texto)){
+                        return false;
+                    }
+                    return true;
+
+                }
+                function validarTextosLargos(textoLargo){
+                    if(!patron_textoNormal.test(textoLargo)){
+                        return false;
+                    }
+                    return true;
+
+                }
+
+                function nifEncontrado(nif){
+
+                    for(x=0;x<datos.length;x++){
+                        if(nif==datos[x].nif){
+                            
+                            x=datos.length;
+                            return true;
+                            
+                        }
+
+                    }
+                    return false;
+
+                }
+
+                function formatoNif(nif){
+
+                    letras=["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"];
+
+                  var  num= nif.substring(0,8);
+                    parseInt(num);
+                  var  letra= nif.substring(8,9);
+                    var x= num%23;
+                    if(letra==letras[x]){
+                        return true;
+                    }
+                    return false;
+                }
+
+             
+
+
+                //fin bloque funciones y inicializaciones de utilidad
+                //inicio bloque botones
+                function mostrarAltas(){
+                    document.getElementById('capaBotones1').style.display="none";
+                    document.getElementById('consultas').style.display="none";
+                    document.getElementById('bajas').style.display="none";
+                    document.getElementById('modificaciones').style.display="none";
+                    document.getElementById('altas').style.display="block";
+                }
+                function mostrarBajas(){
+                    document.getElementById('capaBotones1').style.display="none";
+                    document.getElementById('consultas').style.display="none";
+                    document.getElementById('bajas').style.display="block";
+                    document.getElementById('modificaciones').style.display="none";
+                    document.getElementById('altas').style.display="none";
+
+                }
+                function mostrarConsulta(){
+                    document.getElementById('capaBotones1').style.display="none";
+                    document.getElementById('consultas').style.display="block";
+                    document.getElementById('bajas').style.display="none";
+                    document.getElementById('modificaciones').style.display="none";
+                    document.getElementById('altas').style.display="none";
+
+
+                }
+
+                function mostrarModificaciones(){
+                    document.getElementById('capaBotones1').style.display="none";
+                    document.getElementById('consultas').style.display="none";
+                    document.getElementById('bajas').style.display="none";
+                    document.getElementById('modificaciones').style.display="block";
+                    document.getElementById('altas').style.display="none";
+
+                }
+                function salir(){
+                    window.close();
+
+                }
+                //fin bloque botones.
+                //inicio bloque altas
+
+                function validarForm(){
+                    var nif= document.getElementById('nif').value;
+                    if(nifEncontrado(nif)){
+                        alert("Usuario existente.");
+                        document.getElementById('nif').value="";
+                        document.getElementById('nif').focus();
+                        volverMenu();
+                    }else if(!validarNif(nif)){
+                        alert("NIF no valido.");
+                        document.getElementById('nif').value="";
+                        document.getElementById('nif').focus();
+
+                    }else if(!formatoNif(nif)){
+                        alert("La letra de tu NIF no es valida");
+                        document.getElementById('nif').value="";
+                        document.getElementById('nif').focus();
+                    }else{
+                        nifValidado();
+                    }
+
+
+                }
+                
+                function darDeAlta(){
+                    vNif=document.getElementById('nif').value;
+                    vApel1=document.getElementById('apel1').value;
+                    vApel2=document.getElementById('apel2').value;
+                    vNombre=document.getElementById('nombre').value;
+                    vDepartamento=document.getElementById('departamento').value;
+                    vTlf=document.getElementById('tlf').value;
+                    vEmail=document.getElementById('email').value;
+                    vAntiguedad=document.getElementById('antiguedad').value;
+
+                    if(!validarTextos(vApel1)){
+                        alert("El primer apellido no es valido");
+                        document.getElementById('apel1').value="";
+                        document.getElementById('apel1').focus();
+
+                    }else  if(!validarTextos(vApel2)){
+                        alert("El segundo apellido no es valido");
+                        document.getElementById('apel2').value="";
+                        document.getElementById('apel2').focus();
+
+                    }else  if(!validarTextos(vNombre)){
+                        alert("El nombre no es valido");
+                        document.getElementById('nombre').value="";
+                        document.getElementById('nombre').focus();
+
+                    }else if(!validarTextos(vDepartamento)){
+                        alert("El departamento no es valido");
+                        document.getElementById('departamento').value="";
+                        document.getElementById('departamento').focus();
+
+                }else if(!validarTlf(vTlf)){
+                        alert("El telefono no es valido");
+                        document.getElementById('tlf').value="";
+                        document.getElementById('tlf').focus();
+                }else{
+                    persona= new Object();
+
+                    persona= {
+                        'nif': vNif,
+                        'apel1': vApel1,
+                        'apel2': vApel2,
+                        'nombre': vNombre,
+                        'departamento': vDepartamento,
+                        'tlf': vTlf,
+                        'email': vEmail,
+                        'antiguedad': vAntiguedad
+                    };
+
+                    datos.push(persona);
+
+                    alert("Registrado correctamente");
+
+                    registrado();
+
+                   
+
+                }
+            }
+            function nifValidado(){
+                    document.getElementById('form2').style.display="block";
+                        document.getElementById('reg').style.display="block";
+                        document.getElementById('valid').style.display="none";
+                        document.getElementById('nif').disabled=true;
+
+                }
+                function registrado(){
+
+                    document.getElementById('nif').value="";
+                    document.getElementById('apel1').value="";
+                    document.getElementById('apel2').value="";
+                    document.getElementById('nombre').value="";
+                    document.getElementById('departamento').value="";
+                    document.getElementById('tlf').value="";
+                    document.getElementById('email').value="";
+                    document.getElementById('antiguedad').value="";
+
+                    document.getElementById('form2').style.display="none";
+                        document.getElementById('reg').style.display="none";
+                        document.getElementById('valid').style.display="block";
+                        document.getElementById('nif').disabled=false;
+                        document.getElementById('nif').focus();
+                }
+                //fin bloque altas
+                //inicio bloque bajas
+
+                function darDeBaja(){
+                    var nif=document.getElementById('nifBaja').value; 
+                    var y;
+                    if(nifEncontrado(nif)){
+                        alert("Nif encontrado");
+                    for(x=0;x<datos.length;x++){
+                        
+                        if(nif==datos[x].nif){
+                            y=x;
+                            x=datos.length;
+
+
+                        }
+
+                    }
+                    var opcion= confirm("¿Esta seguro que quiere Eliminar este usuario?");
+                    if(opcion){
+
+                        datos.splice(y,1);
+                        alert("Eliminado correctamente");
+                        alert(datos.length);
+                        document.getElementById('nifBaja').value="";
+                        document.getElementById('nifBaja').focus();
+
+                    }else{
+                        document.getElementById('nifBaja').value="";
+                        document.getElementById('nifBaja').focus();
+
+                    }
+                }else{
+                    alert("El NIF es inexistente");
+                    document.getElementById('nifBaja').value="";
+                    document.getElementById('nifBaja').focus();
+                }
+                }
+
+                //fin bloque bajas
+                //inicio bloque consulta
+                function seleccionar(){
+                    if(document.getElementById('opcionNif').checked){
+                        document.getElementById('nifConsultas').style.display="block";
+                        document.getElementById('consultarNif').style.display="block";
+                        document.getElementById('apelConsultas').style.display="none";
+                        document.getElementById('consultarApel').style.display="none";
+                    }else if(document.getElementById('opcionApellido').checked){
+
+                        document.getElementById('nifConsultas').style.display="none";
+                        document.getElementById('consultarNif').style.display="none";
+                        document.getElementById('apelConsultas').style.display="block";
+                        document.getElementById('consultarApel').style.display="block";
+                    }
+
+                }
+
+                function consultarPorNif(){
+                    nif= document.getElementById('nifCons').value;
+                    tabla= '<table class="tablaConsulta" border="1" style="text-align:center;">'+
+                    '<thead>'+
+                        '<tr>'+ 
+                        '<th>NIF</th>'+
+                        '<th>NOMBRE</th>'+ 
+                           '<th>1. APELLIDO</th>'+
+                           '<th>2. APELLIDO</th>'+
+                          '<th>DEPARTAMENTO</th>'+
+                           '<th>TELEFONO</th>'+
+                            '<th>EMAIL</th>'+
+                           '<th>ANTIGÜEDAD</th>'+
+                           '</thead>'+
+                            '</tr>';
+                    
+                    var y;
+                    if(nifEncontrado(nif)){
+                        
+                        for(x=0;x<datos.length;x++){
+                            
+                        if(nif==datos[x].nif){
+                            y=x;
+                            x=datos.length;
+                            
+                        }
+                    }
+                    tabla+=
+                    '<tr>'+
+                        '<td>'+datos[y].nif+'</td>'+
+                        '<td>'+datos[y].nombre+'</td>'+
+                        '<td>'+datos[y].apel1+'</td>'+
+                        '<td>'+datos[y].apel2+'</td>'+
+                        '<td>'+datos[y].departamento+'</td>'+
+                        '<td>'+datos[y].tlf+'</td>'+
+                        '<td>'+datos[y].mail+'</td>'+
+                        '<td>'+datos[y].antiguedad+'</td>'+
+                        '</tr>'+
+                        '</table>';
+
+                        document.getElementById('capaTabla').style.display="block";
+                        document.getElementById('capaTabla').innerHTML=tabla;  
+                                         
+                }else{
+                    alert("Nif no encontrado");
+                    document.getElementById('nifCons').value="";
+                    document.getElementById('nifCons').focus();
+                }
+            }
+            
+                function consultarPorApel(){
+                    apel= document.getElementById('apelCons').value;
+                    apelEnc=false;
+                    tabla= '<table class="tablaConsulta" border="1" style="text-align:center;">'+
+                    '<thead>'+
+                        '<tr>'+ 
+                        '<th>NIF</th>'+
+                        '<th>NOMBRE</th>'+ 
+                           '<th>1. APELLIDO</th>'+
+                           '<th>2. APELLIDO</th>'+
+                          '<th>DEPARTAMENTO</th>'+
+                           '<th>TELEFONO</th>'+
+                            '<th>EMAIL</th>'+
+                           '<th>ANTIGÜEDAD</th>'+
+                           '</thead>'+
+                            '</tr>'+
+                            '<tbody>';
+
+                    for(x=0;x<datos.length;x++){
+
+                        if(apel==datos[x].apel1){
+                            tabla+= '<tr>'+
+                        '<td>'+datos[x].nif+'</td>'+
+                        '<td>'+datos[x].nombre+'</td>'+
+                        '<td>'+datos[x].apel1+'</td>'+
+                        '<td>'+datos[x].apel2+'</td>'+
+                        '<td>'+datos[x].departamento+'</td>'+
+                        '<td>'+datos[x].tlf+'</td>'+
+                        '<td>'+datos[x].mail+'</td>'+
+                        '<td>'+datos[x].antiguedad+'</td>'+
+                        '</tr>';
+                        apelEnc=true;
+                        }
+
+                    }
+
+                    tabla+='</tbody>'+
+                    '</table>';
+                    if(apelEnc){
+                    document.getElementById('capaTabla').innerHTML=tabla;
+                    document.getElementById('capaTabla').style.display="block";
+                    }else{
+                        alert("Apellido no encontrado");
+                        document.getElementById('apelCons').value="";
+                        document.getElementById('apelCons').focus();
+
+                    }
+
+                }
+                //fin bloque consulta
+                //bloque modificaciones
+                function mostrarMod(){
+                    var nif= document.getElementById('nifMod').value;
+                    if(nifEncontrado(nif)){
+                        document.getElementById('mod2').style.display="block";
+                        document.getElementById('modificar').style.display="block";
+                        document.getElementById('validarMod').style.display="none";
+                        document.getElementById('nifMod').disabled=true;
+                    } else{
+                        alert("Nif inexistente");
+                        document.getElementById('nifMod').value="";
+                        document.getElementById('nifMod').focus();
+                    }
+                }
+
+                function modificarDatos(){
+                    var nif= document.getElementById('nifMod').value;
+                    var departamento= document.getElementById('departamentoMod').value;
+                    var tlf= document.getElementById('telefonoMod').value;
+                    var mail=document.getElementById('mailMod').value;
+                    var y;
+                    for(x=0;x<datos.length;x++){
+                        if(datos[x].nif==nif){
+                            y=x;
+                            x=datos.length;
+                        }
+
+                    }
+
+                    if(validarTextos(departamento)){
+                        if(datos[y].departamento!=departamento){                            
+                                if(validarTlf(tlf)){
+                                    if(datos[y].tlf!=tlf){
+                                        if(datos[y].mail!=mail){
+                                            datos[y].tlf=tlf;
+                                            datos[y].departamento=departamento;
+                                           datos[y].mail=mail;
+                                           alert("usuario modificado correctamente");
+                                           nif= document.getElementById('nifMod').value="";
+                                           departamento= document.getElementById('mailMod').value="";
+                                           departamento= document.getElementById('telefonoMod').value="";
+                                           departamento= document.getElementById('departamentoMod').value="";
+                                         document.getElementById('mod2').style.display="none";
+                                         document.getElementById('modificar').style.display="none";
+                                         document.getElementById('validarMod').style.display="block";
+                                         document.getElementById('nifMod').disabled=false;
+                                         departamento= document.getElementById('telefonoMod').disabled=false;
+                                        departamento= document.getElementById('departamentoMod').disabled=false;
+                                        }else{
+                                            alert("El mail introducido ya esta vigente en este usuario");
+                                        departamento= document.getElementById('mailMod').value="";
+                                        departamento= document.getElementById('mailMod').focus();
+                                        departamento= document.getElementById('telefonoMod').disabled=true;
+                                        departamento= document.getElementById('departamentoMod').disabled=true;
+                                        }
+                                    }else{
+                                        alert("El telefono introducido ya esta vigente en este usuario");
+                                        departamento= document.getElementById('telefonoMod').value="";
+                                        departamento= document.getElementById('telefonoMod').focus();
+                                        departamento= document.getElementById('departamentoMod').disabled=true;
+                                    }
+                                }else{
+                                    alert("El telefono no es correcto");
+                            departamento= document.getElementById('telefonoMod').value="";
+                            departamento= document.getElementById('telefonoMod').focus();
+                                }
+                        }else{
+                            alert("El departamento introducido ya esta vigente en este usuario");
+                            departamento= document.getElementById('departamentoMod').value="";
+                            departamento= document.getElementById('departamentoMod').focus();
+
+                    }   
+
+                    }else{
+                        alert("El departamento no es correcto");
+                        departamento= document.getElementById('departamentoMod').value="";
+                            departamento= document.getElementById('departamentoMod').focus();
+                    }
+
+
+                
+
+                    
+                }
+               
+                //fin bloque modificaciones
+
+            </script>
+
+       
+
+    </body>
+</html>

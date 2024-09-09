@@ -1,0 +1,75 @@
+<body>
+
+    <script type="text/javascript">
+        var nombre, apel1, apel2, correcto=true;
+       
+
+      var patron_general=/^[A-Z][a-z]{2,24}$/;
+      
+
+      
+        function validar(cadena){
+
+       if(!patron_general.test(cadena)){ //metodo para comprobar si la cadena es correcta.
+       	
+    		return false;
+
+       	}
+       	return true;
+       }
+     
+   		function escribir(){ //funcion en la que si el dato no es valido el campo se borra y el focus va hacia el campo erroneo.
+   		nombre=document.getElementById('nombre').value;
+        apel1=document.getElementById('apel1').value;
+        apel2=document.getElementById('apel2').value;
+
+   			if(validar(nombre)==false){
+   				document.getElementById('nombre').value="";
+   				document.getElementById('nombre').focus();
+
+   			}else if(validar(apel1)==false){
+                document.getElementById('nombre').setAttribute("disabled", "");
+   				document.getElementById('apel1').value="";
+   				document.getElementById('apel1').focus();
+   			}else if(validar(apel2)==false){
+                document.getElementById('apel1').setAttribute("disabled", "");
+   				document.getElementById('apel2').value="";
+   				document.getElementById('apel2').focus();
+   			}else{
+
+   				alert("Cliente " + nombre + " " + apel1 + " "+ apel2 + " registrado correctamente");
+   			
+   			}
+
+
+   	}
+
+
+
+       
+    </script>
+
+    <form>
+
+        <div style="border-style: solid; border-color: black; width: 40vw; height: 40vh;margin-left: 25vw;">
+            <p style="margin-left: 8vw;">
+            NOMBRE: <input type="text" name="nombre"  id="nombre"
+            style="margin-left:1.6vw; margin-top:10vh;">
+            <br><br>
+            APELLIDO 1: <input type="text" name="ape1" id="apel1">
+            <br><br>
+            APELLIDO 2: <input type="text" name="ape2" id="apel2">
+            <br><br>
+            <input type="button" name="registrar" value="registrar" onclick="escribir()" 
+            style="margin-left: 10vw;">
+            </p>
+
+        </div>
+
+
+    </form>
+
+ 
+
+
+</body>

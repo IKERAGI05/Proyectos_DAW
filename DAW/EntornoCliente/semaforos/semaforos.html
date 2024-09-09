@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="semaforos.css">
+    </head>
+    <body>
+        <script src="jquery-3.6.1.min.js"></script>
+        <script>$(document).ready(function() {
+        });</script>
+        <div class="base">
+            <div class="carreteraV">
+                <div class="rectangulosVPrim"></div>
+                <div class="triangulosVPrim"></div>   
+                <div class="bpasoV">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="rectangulosV"></div>
+                <div class="triangulosV"></div>
+                <div class="bpasoV" style="margin-top: 32%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="rectangulosV"></div>
+                <div class="triangulosV"></div>  
+            </div>
+            <div class="carreteraV2">         
+                <div class="triangulosV2"></div>
+                <div class="rectangulosV2"></div>
+                <div class="bpasoV" style="margin-top: 210%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="triangulosV2" style="margin-top: 300%;"></div>
+                <div class="rectangulosV2"></div>
+                <div class="bpasoV" style="margin-top: 160%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="triangulosV2" style="margin-top: 380%;"></div>
+                <div class="rectangulosV2"></div>
+                
+            </div>
+            <div class="carreteraH">
+                <div class="rectangulosHPrim"></div>
+                <div class="triangulosHPrim"></div>
+                <div class="bpasoH">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="rectangulosH"></div>
+                <div class="triangulosH"></div>
+                <div class="bpasoH" style="margin-left: 6.9%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="rectangulosH" style="margin-left:16%;"></div>
+                <div class="triangulosH"></div>        
+            </div>
+            <div class="carreteraH2">
+                <div class="triangulosH2" style="margin-left: 18%;"></div>
+                <div class="rectangulosH2"></div>
+                <div class="bpasoH" style="margin-left: 15%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="triangulosH2" style="margin-left:10%;"></div>
+                <div class="rectangulosH2"></div>
+                <div class="bpasoH" style="margin-left: 16%;">
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                    <div class="transp"></div>
+                    <div class="blanco"></div>
+                </div>
+                <div class="triangulosH2" style="margin-left: 24%;"></div>
+                <div class="rectangulosH2"></div>
+                
+            </div>
+            <div class="carreteraC">
+              
+                <!--semaforos peaton-->
+                <div id="sp1" class="semaforoPeaton" style="margin-left: 14.5%; margin-top: 3.7%;">
+                    <div class="cuadro contadorG1">
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                    
+                </div>
+                <div id="sp1.2" class="semaforoPeaton" style="margin-left: 14.5%; margin-top: 11.2%;">
+                        <div class="cuadro contadorG1">
+                            
+                        </div>
+                        <div class="cuadro">
+                            <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                            <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                        </div>
+                </div>
+                <div id="sp2" class="semaforoPeaton" style="margin-left: 19.2%; margin-top: 1%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp2.2" class="semaforoPeaton" style="margin-left: 25.4%; margin-top: 1%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp3" class="semaforoPeaton" style="margin-left: 25.4%; margin-top: 14%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp3.2" class="semaforoPeaton" style="margin-left: 19.2%; margin-top: 14%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp4" class="semaforoPeaton" style="margin-left: 29.7%; margin-top: 17.7%;">
+                    <div class="cuadro contadorG1">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp4.2" class="semaforoPeaton" style="margin-left: 29.7%; margin-top: 25.4%;">
+                    <div class="cuadro contadorG1">
+                       
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp5" class="semaforoPeaton" style="margin-left: 48%; margin-top: 3.7%;">
+                    <div class="cuadro contadorG1">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp5.2" class="semaforoPeaton" style="margin-left: 48%; margin-top: 11.4%;">
+                    <div class="cuadro contadorG1">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp6" class="semaforoPeaton" style="margin-left: 52.1%; margin-top: 14.3%;">
+                    <div class="cuadro contadorG2">
+                       
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp6.2" class="semaforoPeaton" style="margin-left: 58.4%; margin-top: 14.3%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp7" class="semaforoPeaton" style="margin-left: 52.1%; margin-top: 28.1%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp7.2" class="semaforoPeaton" style="margin-left: 58.3%; margin-top: 28.1%;">
+                    <div class="cuadro contadorG2">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo2" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo2" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp8" class="semaforoPeaton" style="margin-left: 62.4%; margin-top: 17.7%;">
+                    <div class="cuadro contadorG1">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+                <div id="sp8.2" class="semaforoPeaton" style="margin-left: 62.4%; margin-top: 25.3%;">
+                    <div class="cuadro contadorG1">
+                        
+                    </div>
+                    <div class="cuadro">
+                        <img class="rojoPGrupo1" src="PibeRojoPaa.png">
+                        <img class="verdePGrupo1" src="PibeVerdePaa.png" style="display: none;">
+                    </div>
+                </div>
+ 
+                <!--semaforos coche-->
+                <div id="s1" class="claseSemaforo" style="margin-left: 19%; margin-top: 10%;">
+                    <div id="rojo" class="claseLuz rojoGrupo1"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo1"></div>
+                    <div id="verde" class="claseLuz verdeGrupo1"></div>
+                  </div>
+                <div id="s2" class="claseSemaforo" style="margin-left: 25.4%; margin-top: 4.4%;">
+                    <div id="rojo" class="claseLuz rojoGrupo2"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo2"></div>
+                    <div id="verde" class="claseLuz verdeGrupo2"></div>
+                  </div>
+                  <div id="s3" class="claseSemaforo" style="margin-left: 19%; margin-top: 18.5%;">
+                    <div id="rojo" class="claseLuz rojoGrupo2"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo2"></div>
+                    <div id="verde" class="claseLuz verdeGrupo2"></div>
+                  </div>
+                  <div id="s4" class="claseSemaforo" style="margin-left: 25.4%; margin-top: 24%;">
+                    <div id="rojo" class="claseLuz rojoGrupo1"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo1"></div>
+                    <div id="verde" class="claseLuz verdeGrupo1"></div>
+                  </div>
+                  <div id="s5" class="claseSemaforo" style="margin-left: 52%; margin-top: 4.2%;">
+                    <div id="rojo" class="claseLuz rojoGrupo1"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo1"></div>
+                    <div id="verde" class="claseLuz verdeGrupo1"></div>
+                  </div>
+                  <div id="s6"  class="claseSemaforo" style="margin-left: 58.4%; margin-top: 11%;">
+                    <div id="rojo" class="claseLuz rojoGrupo2"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo2"></div>
+                    <div id="verde" class="claseLuz verdeGrupo2"></div>
+                  </div>
+                  
+                  <div id="s7" class="claseSemaforo" style="margin-left: 52%; margin-top: 24.7%;">
+                    <div id="rojo" class="claseLuz rojoGrupo2"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo2"></div>
+                    <div id="verde" class="claseLuz verdeGrupo2"></div>
+                  </div>
+                  <div id="s8" class="claseSemaforo" style="margin-left: 58.4%; margin-top: 18.2%;">
+                    <div id="rojo" class="claseLuz rojoGrupo1"></div>
+                    <div id="amarillo" class="claseLuz ambarGrupo1"></div>
+                    <div id="verde" class="claseLuz verdeGrupo1"></div>
+                  </div>
+                  <!--botones-->
+                    <div id="b1" class="botonPeaton" style="margin-left: 13%; margin-top: 5.4%;" >
+                            <button class="circuloBoton bgrupo1" disabled></button>                       
+                  </div>
+                  <div id="b1.2" class="botonPeaton" style="margin-left: 13%; margin-top: 11%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b2" class="botonPeaton" style="margin-left: 17.9%; margin-top: 3%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b2.2" class="botonPeaton" style="margin-left: 27.4%; margin-top: 3%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b3" class="botonPeaton" style="margin-left: 27.4%; margin-top: 16%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b3.2" class="botonPeaton" style="margin-left: 17.9%; margin-top: 16%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b4" class="botonPeaton" style="margin-left: 31.8%; margin-top: 19.6%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b4.2" class="botonPeaton" style="margin-left: 31.8%; margin-top: 25%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b5" class="botonPeaton" style="margin-left: 46.6%; margin-top: 5.6%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b5.2" class="botonPeaton" style="margin-left: 46.6%; margin-top: 11.2%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b6" class="botonPeaton" style="margin-left: 50.8%; margin-top: 16.3%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b6.2" class="botonPeaton" style="margin-left: 60.4%; margin-top: 16.3%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b7" class="botonPeaton" style="margin-left: 50.8%; margin-top: 30%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b7.2" class="botonPeaton" style="margin-left: 60.3%; margin-top: 30%;">
+                    <button class="circuloBoton bgrupo1" disabled></button>                       
+                </div>
+                <div id="b8" class="botonPeaton" style="margin-left: 64.4%; margin-top: 19.5%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+                <div id="b8.2" class="botonPeaton" style="margin-left: 64.4%; margin-top: 25.2%;">
+                    <button class="circuloBoton bgrupo2" disabled></button>                       
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 44%; margin-top: 4%;"><button id="on" class="on-off"><img src="pulgarOn.png"></button>
+            <button id="off" class="on-off" disabled><img src="manoOff.png"></button>
+        </div>
+        <script src="semaforos.js"></script>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		var n1, n2, n3, mayor, medio, menor; //declaramos variables
+		
+		n1=prompt('Introduce el primer numero');
+		n2=prompt('Introduce el segundo numero');
+		n3=prompt('Introduce el tercer numero');
+
+
+		while(isNaN(n1)||isNaN(n2)||isNaN(n3)){
+
+			alert('Introduce valores numericos');
+
+		n1=prompt('Introduce el primer numero');
+		n2=prompt('Introduce el segundo numero');
+		n3=prompt('Introduce el tercer numero');
+
+		//bloque para controlar si los valores introducidos son numericos, si no es asi, avisa y repite la secuencia de petición de numeros.
+
+		}
+
+		while(n1.length==0||n2.length==0||n3.length==0){
+
+			alert('Ninguno de los numeros puede ser nulo');
+
+		n1=prompt('Introduce el primer numero');
+		n2=prompt('Introduce el segundo numero');
+		n3=prompt('Introduce el tercer numero');
+
+		//bloque que controla que los valores introducidos no sean nulos.
+
+		}
+
+		if(n1>n2&&n1>n3){		
+
+			mayor=n1;
+			if(n3>n2){
+				
+				medio=n3;
+				menor=n2;
+			}else{
+
+				medio=n2;
+				menor=n3;
+
+			}
+
+		}else if(n2>n1&&n2>n3){
+
+			mayor=n2;
+
+			if(n3>n1){
+				
+				medio=n3;
+				menor=n1;
+
+			}else{
+				medio=n1;
+				menor=n3;
+			}
+		}else{ //if(n3>n1&&n3>n2){
+			mayor=n3;
+			if(n1>n2){
+				medio=n1;
+				menor=n2;
+
+			}else{
+				medio=n2;
+				menor=n1;
+			}
+
+		}
+
+		alert('Orden: ' + mayor + ', ' + medio + ', ' + menor);
+	</script>
+
+</body>
+</html>

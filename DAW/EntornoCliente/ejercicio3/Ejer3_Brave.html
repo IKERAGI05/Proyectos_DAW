@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		var dia;
+		var num;
+		var resultado;
+
+		dia=prompt('Introduzca un dia lectivo de la semana');
+		num=prompt('Introduzca una hora del 1-6');
+
+		
+
+		while(dia.length==0||num.length==0){
+			alert('El dia o la hora no puede ser nulos');
+			dia=prompt('Introduzca un dia lectivo de la semana');
+			num=prompt('Introduzca una hora del 1-6');
+
+	
+		}
+		while(dia.toLowerCase()!='lunes'&&dia.toLowerCase()!='martes'
+			&&dia.toLowerCase()!='miercoles'&&dia.toLowerCase()!='jueves'&&dia.toLowerCase()!='viernes'){
+
+			alert('El dia no es lectivo o no existe');
+			dia=prompt('Introduzca un dia lectivo de la semana');
+
+
+		}
+
+		while(isNaN(num)||num<1||num>6){
+			alert('La hora debe ser un valor numerico del 1 al 6');
+
+			num=prompt('Introduzca una hora del 1-6');
+
+		}
+
+
+		if(dia.toLowerCase()=='lunes'){
+			switch(num){
+				case '1': resultado='Despliegue-->8:00-9:00';
+				break;
+				case '2': resultado='Despliegue-->9:00-10:00';
+				break;
+				case '3': resultado='Despliegue-->10:00-11:00';
+				break;
+				case '4': resultado='Dcliente-->11:30-12:30';
+				break;
+				case '5': resultado='Dcliente-->12:30-13:30';
+				break;
+				case '6': resultado='Diseño-->13:30-14:30';
+				break;
+				default:
+				resultado='Hora erronea';
+				break;
+
+			}
+
+		}else 	if(dia.toLowerCase()=='martes'){
+			switch(num){
+				case '1': resultado='Dservidor-->8:00-9:00';
+				break;
+				case '2': resultado='Dservidor-->9:00-10:00';
+				break;
+				case '3': resultado='Dcliente-->10:00-11:00';
+				break;
+				case '4': resultado='Dcliente-->11:30-12:30';
+				break;
+				case '5': resultado='Dservidor-->12:30-13:30';
+				break;
+				case '6': resultado='Dservidor-->13:30-14:30';
+				break;
+				default:
+				resultado='Hora erronea';
+
+			}
+
+		}else 	if(dia.toLowerCase()=='miercoles'){
+			switch(num){
+				case '1': resultado='Dcliente-->8:00-9:00';
+				break;
+				case '2': resultado='Dcliente-->9:00-10:00';
+				break;
+				case '3': resultado='Dcliente-->10:00-11:00';
+				break;
+				case '4': resultado='Diseño-->11:30-12:30';
+				break;
+				case '5': resultado='Diseño-->12:30-13:30';
+				break;
+				case '6': resultado='Diseño-->13:30-14:30';
+				break;
+				default:
+				resultado='Hora erronea';
+
+			}
+
+		}else if(dia.toLowerCase()=='jueves'){
+			switch(num){
+				case '1': resultado='Empresa-->8:00-9:00';
+				break;
+				case '2': resultado='Empresa-->9:00-10:00';
+				break;
+				case '3': resultado='Empresa-->10:00-11:00';
+				break;
+				case '4': resultado='Dservidor-->11:30-12:30';
+				break;
+				case '5': resultado='Dservidor-->12:30-13:30';
+				break;
+				case '6': resultado='Dservidor-->13:30-14:30';
+				break;
+				default:
+				resultado='Hora erronea';
+
+			}
+
+		}else if(dia.toLowerCase()=='viernes'){
+			switch(num){
+				case '1': resultado='Despliegue-->8:00-9:00';
+				break;
+				case '2': resultado='Despliegue-->9:00-10:00';
+				break;
+				case '3': resultado='Dservidor-->10:00-11:00';
+				break;
+				case '4': resultado='Dservidor-->11:30-12:30';
+				break;
+				case '5': resultado='Diseño-->12:30-13:30';
+				break;
+				case '6': resultado='Diseño-->13:30-14:30';
+				break;
+				default:
+				resultado='Hora erronea';
+
+			}
+
+		}else {
+
+			//resultado='Este dia de la semana no es lectivo o no existe';	
+		}
+
+		alert(resultado);
+
+
+		
+	</script>
+
+</body>
+</html>

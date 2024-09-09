@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<header>
+</header>
+
+<body>
+    <script>
+        var numeros=[];
+        var num;
+        for(x=0; x<10;x++){
+            num=prompt("Introduzca 1 numero del 0-25");
+            num=num.trim();
+            
+            while(num<0||num>25){
+
+                alert("el numero debe estar entre el 0 y el 25"); //controlamos que el número este entre el 0 y el 25
+                num=prompt("Introduzca 1 numero del 0-25");
+                num=num.trim();
+            }
+            while(num.length==0||isNaN(num)){ //controlamos que no este vacio y sea númerico.
+                alert("El valor introducido deber ser númerico y no puede estar vacio.");
+                num=prompt("Introduzca 1 numero del 0-25");
+                num=num.trim();
+
+            }
+            for(y=0;y<numeros.length;y++){
+                while(numeros[y]==num){
+                    alert("El número introducido no puede ser repetido");
+                    num=prompt("Introduzca 1 numero del 0-25");
+                    num=num.trim();
+                    y=0;
+                }
+
+            }
+            num=parseInt(num);
+           
+            numeros.push(num);
+
+        }
+
+        var aux;
+        for(j=0; j<numeros.length;j++){
+        for(i=0; i<numeros.length-j;i++){
+            if(numeros[i]>numeros[i+1]){
+                aux=numeros[i+1];
+                numeros[i+1]=numeros[i];
+                numeros[i]=aux;
+
+            }
+
+        }
+    }
+    document.write("Lista de números: ");
+    for(z=0;z<numeros.length;z++){
+        if(z!=numeros.length-1){
+            document.write(numeros[z] + " - ");
+
+    }else{
+        document.write(numeros[z]);
+
+    }
+}
+    </script>
+
+</body>
+
+
+</html>

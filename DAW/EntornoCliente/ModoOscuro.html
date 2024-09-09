@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>
+            .oscuro{
+                color: white;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="jquery-3.6.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+
+            });
+        </script>
+        <p>
+            <label>Hola</label><br>
+            <input type="button" name="boton" id="boton" value="cambiar" onclick="cambiar()">
+        </p>
+        <script>
+            //$("#boton").click(function(){$('body').toggleClass('oscuro')});
+           // $("#boton").click(function(){$('#boton').toggleClass('oscuro')});
+           function cambiar(){
+            $('body').toggleClass('oscuro');
+           }
+        </script>
+    </body>
+</html>

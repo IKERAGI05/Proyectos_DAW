@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <script src="js/bootstrap.min.js"></script>
+        <style>
+            .row{
+                margin-top: 3%;
+            }
+            #bAltas,#bConsultas,#bBajas,#bModificar{
+               width: 30%;
+            }
+            #formAlta,#formAltaPadre{
+                width: 45%;
+                height: 40%;
+                margin-left: 35%;
+                margin-top: 5%;
+            }
+            #formBaja,#formModificar{
+                width: 40%;
+                height: 40%;
+                margin-left: 35%;
+                margin-top: 5%;
+            }
+            #formConsulta{
+                margin-left: 35%;
+                
+            }
+            .form-control{
+                width: 55%;
+            }
+            .titulo{
+                color: blueviolet;
+                font-family: Grenze;
+            }
+            .tabla{
+                width: 50%;
+                margin-top: 2%;
+                margin-left: 35%;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var hijos=[{'nif':'12345678H', 'nombre':'Ander', 'apel1': 'Fernandez', 'apel2': 'Gomez','nifTutor': '77777777L'},
+            {'nif':'87654321A', 'nombre':'Aitor', 'apel1': 'Fernandez', 'apel2': 'Gomez','nifTutor': '77777777L'},
+            {'nif':'12332145O', 'nombre':'Miren', 'apel1': 'Recio', 'apel2': 'Gomez','nifTutor': '12345678P'}];
+            var padres=[{'nif':'77777777L', 'nombre':'Miguel', 'apel1': 'Fernandez', 'apel2': 'Hernan','mail': 'Miguel@gmail.com', 'nHijos': 2},
+            {'nif':'12345678P', 'nombre':'Ane', 'apel1': 'Gomez', 'apel2': 'Lopez','mail': 'Ane@gmail.com', 'nHijos': 1}];
+            patron_nif=/^[0-9]{8}[A-Z]$/;
+            patron_nom=/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+            patron_mail=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+        </script>
+    <div id="capaBotones" style="margin-top: 10%;">
+         <div class="container" style="background-color: rgb(48, 95, 247); width: 40%; background-image: linear-gradient(to bottom, blue , lightblue);">
+            <div class="col-sm" style="margin-left: 35%;">
+                <div class="row">
+                    <button class="btn btn-primary" id="bAltas" onclick="mostrarAltas()" style="margin-top: 3%;">Altas</button>
+                </div>
+                <div class="row">
+              <button class="btn btn-primary" onclick="mostrarConsulta()" id="bConsultas">Consultas</button>                
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" onclick="mostrarMod()" id="bModificar">Modificar</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" id="bBajas" onclick="mostrarBaja()" style="margin-bottom: 3%;">Bajas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="capaAlta" style="display: none;">
+            <div id="formAlta">
+                <h1 class="titulo">Alta Alumno</h1>
+            <form>
+                <div class="form-floating mb-3">
+                <label for="floatingInput"><b>NIF</b></label>
+                <input type="text" class="form-control" name="nifAlta" id="nifAlta">
+                
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput"><b>Nombre</b></label>
+                <input type="text" class="form-control" name="nombreAlta" id="nombreAlta">
+                
+                </div>
+                <div class="form-floating mb-3">
+                <label for="floatingInput"><b>Apel1</b></label>
+                <input type="text" class="form-control" name="apel1Alta" id="apel1Alta">
+                
+                </div>
+                <div class="form-floating mb-3">
+                <label for="floatingInput"><b>Apel2</b></label>
+                <input type="text" class="form-control" name="apel2Alta" id="apel2Alta">
+               
+                </div>
+                <div class="form-floating mb-3">
+                <label for="floatingInput"><b>NIF Tutor</b></label>
+                <input type="text" class="form-control" name="nifTutorAlta" id="nifTutorAlta">
+                </div>
+                <div class="form-floating mb-3">
+                <button type="button" class="btn btn-primary btn-sm" name="bEnviarAlta" id="bEnviarAlta" onclick="darDeAlta()" style="margin-left: 15%;">Enviar</button>
+                <button type="button" class="btn btn-primary btn-sm" name="bVolverMenuAlta" id="bVolverMenuAlta" onclick="volverMenu()" style=" background-color:#DC3545; margin-left: 3%;">Volver</button>
+                </div>
+            </form>
+        </div>
+        </div>
+
+        <div id="capaAltaPadre" style="display: none;">
+            <div id="formAltaPadre">
+                <h1 class="titulo">Alta Tutor</h1>
+        <form>
+            <div class="form-floating mb-3">
+                <label for="floatingInput"><b>NIF</b></label>
+            <input type="text" class="form-control" name="nifAltaPadre" id="nifAltaPadre">
+            </div>
+            <div class="form-floating mb-3">
+             <label for="floatingInput"><b>Nombre</b></label>
+            <input type="text" class="form-control" name="nombreAltaPadre" id="nombreAltaPadre">
+            
+            </div>
+            <div class="form-floating mb-3">
+             <label for="floatingInput"><b>Apel1</b></label>
+            <input type="text" class="form-control" name="apel1AltaPadre" id="apel1AltaPadre">
+            
+            </div>
+            <div class="form-floating mb-3">
+            <label for="floatingInput"><b>Apel2</b></label>
+            <input type="text" class="form-control" name="apel2AltaPadre" id="apel2AltaPadre">
+            </div>
+            <div class="form-floating mb-3"> 
+            <label for="floatingInput"><b>MAIL</b></label>
+            <input type="text" class="form-control" name="mailAltaPadre" id="mailAltaPadre">
+            
+            </div>
+            <div class="form-floating mb-3">
+            <button type="button" class="btn btn-primary btn-sm" name="bEnviarAltaPadre" id="bEnviarAltaPadre" onclick="darDeAltaPadre()" style="margin-left: 15%;">Enviar</button>
+            <button type="button" class="btn btn-primary btn-sm" name="bVolverMenuAltaPadre" id="bVolverMenuAltaPadre" onclick="volverMenu()" style="width: 15%; background-color:#DC3545; margin-left: 3%;">Volver</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div id="consulta" style="display: none; width: 100%;">
+        
+        <div id="formConsulta">
+            <h1 class="titulo">Consulta</h1>
+            <b>Nombre</b>
+            <input type="text" class="form-control" name="nombreConsulta" id="nombreConsulta" style="width: 25%;">
+            <b>Apel1</b>
+            <input type="text" class="form-control" id="apel1Consulta" style="width: 25%;">
+            <b>Apel2</b>
+            <input type="text" class="form-control" id="apel2Consulta" style="width: 25%;">
+        </div>
+        <div style="margin-top: 1%;">
+            <button type="button" class="btn btn-primary btn-sm" name="enviarConsulta" id="enviarConsulta" onclick="consultar()" style="margin-left: 37%;">Consultar</button>
+            <button type="button" class="btn btn-primary btn-sm" name="bVolverConsulta" id="bVolverConsulta" onclick="volverMenu()" style="background-color:#DC3545; margin-left: 1%;">Volver</button>
+        </div>
+        <div id="datos">
+
+        </div>
+        </div>
+
+        <div id="bajas" style="display: none; width: 100%;">
+            <div id="formBaja">
+                <h1 class="titulo">Dar De Baja</h1>
+            <form>
+            <div>
+            <label><b>NIF</b></label>
+            <input type="text" class="form-control" id="nifBaja" style="width: 35%;">
+            </div>
+            <div class="container text-center" style="margin-top: 1%; margin-left:1%;">
+                <div class="row">
+                    <div class="col">
+                <button type="button" class="btn btn-primary btn-sm" onclick="mostrarAlumno()" id="mostrarBaja">Mostrar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="darDeBajaAlumno" onclick="darDeBaja()" style="display: none;">Eliminar</button>
+                    </div>
+                    <div class="col" style="margin-right: 75%;">
+                <button type="button" class="btn btn-primary btn-sm" id="volverBaja" onclick="volverMenu()" style="background-color:#DC3545;" >Volver</button>
+                    </div>
+            </div>
+            </div>
+        </form>
+            </div>
+            <div id="datosBajaAlumno"></div>
+        </div>
+        <div id="modificar" style="display: none; width: 80%;">
+            <div id="formModificar">
+                <h1 class="titulo">Modificar</h1>
+                <form>
+                    <div>
+                        <label><b>NIF</b></label>
+                        <input type="text" class="form-control" id="nifModificar">
+                    </div>
+                    <div id="formMod2" style="display: none;">
+                        <div>
+                            <label><b>NOMBRE</b></label>
+                            <input type="text" class="form-control" id="nombreModificar">
+                        </div>
+                        <div>
+                            <label><b>APEL1</b></label>
+                            <input type="text" class="form-control" id="apel1Modificar">
+                        </div>
+                        <div>
+                            <label><b>APEL2</b></label>
+                            <input type="text" class="form-control" id="apel2Modificar">
+                        </div>
+                        <div>
+                            <label><b>MAIL</b></label>
+                            <input type="text" class="form-control" id="mailModificar">
+                        </div>
+                    </div>
+                    <div class="container text-center" style="margin-top: 1%; margin-left: 6%;">
+                        <div class="row">
+                            <div class="col">
+                        <button type="button" class="btn btn-primary btn-sm" id="validarMod" onclick="validarPadre()" style="background-color: green;">Validar</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="modificarMod" onclick="modifcarPadre()" style="display: none;">Modificar</button>
+                            </div>
+                            <div class="col" style="margin-right: 50%;">
+                        <button type="button" class="btn btn-primary btn-sm" id="volverMod" onclick="volverMenu()" style="  background-color: #DC3545;">Volver</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+             visualizarDatos="<table border='1' class='tabla'>"+
+                "<th>NIF</th>"+
+                "<th>Nombre</th>"+
+                "<th>Apel1</th>"+
+                "<th>Apel2</th>"+
+                "<th>Nif Tutor</th>";
+            //bloque utilidad
+            function mostrarAltas(){
+                document.getElementById('capaAlta').style.display="block";
+                document.getElementById('capaBotones').style.display="none";
+                document.getElementById('capaAltaPadre').style.display="none";
+                document.getElementById('consulta').style.display="none";
+                document.getElementById('bajas').style.display="none";
+                document.getElementById('modificar').style.display="none";
+                document.getElementById('nifAlta').value="";
+               document.getElementById('nombreAlta').value="";
+                document.getElementById('apel1Alta').value="";
+                document.getElementById('apel2Alta').value="";
+                document.getElementById('nifTutorAlta').value="";
+
+            }
+            function mostrarAltaPadre(){
+                document.getElementById('capaAlta').style.display="none";
+                document.getElementById('capaBotones').style.display="none";
+                document.getElementById('capaAltaPadre').style.display="block";
+                document.getElementById('consulta').style.display="none";
+                document.getElementById('bajas').style.display="none";
+                document.getElementById('modificar').style.display="none";
+                document.getElementById('nifAltaPadre').value="";
+               document.getElementById('nombreAltaPadre').value="";
+                document.getElementById('apel1AltaPadre').value="";
+                document.getElementById('apel2AltaPadre').value="";
+                document.getElementById('mailAltaPadre').value="";
+                
+            }
+            function mostrarConsulta(){
+                document.getElementById('capaAlta').style.display="none";
+                document.getElementById('capaBotones').style.display="none";
+                document.getElementById('capaAltaPadre').style.display="none";
+                document.getElementById('consulta').style.display="block";
+                document.getElementById('bajas').style.display="none";
+                document.getElementById('modificar').style.display="none";
+                document.getElementById('nombreConsulta').value="";
+                document.getElementById('apel1Consulta').value="";
+                document.getElementById('apel2Consulta').value="";
+                document.getElementById('datos').innerHTML="";
+            }
+            function mostrarBaja(){
+                document.getElementById('capaAlta').style.display="none";
+                document.getElementById('capaBotones').style.display="none";
+                document.getElementById('capaAltaPadre').style.display="none";
+                document.getElementById('consulta').style.display="none";
+                document.getElementById('bajas').style.display="block";
+                document.getElementById('modificar').style.display="none";
+                document.getElementById('nifBaja').value="";
+                document.getElementById('datosBajaAlumno').innerHTML="";
+                document.getElementById('darDeBajaAlumno').style.display="none";
+                document.getElementById('mostrarBaja').style.display="block";
+            }
+            function mostrarMod(){
+                document.getElementById('capaAlta').style.display="none";
+                document.getElementById('capaBotones').style.display="none";
+                document.getElementById('capaAltaPadre').style.display="none";
+                document.getElementById('consulta').style.display="none";
+                document.getElementById('bajas').style.display="none";
+                document.getElementById('modificar').style.display="block";
+                document.getElementById('nifModificar').value="";
+                document.getElementById('nombreModificar').value="";
+                document.getElementById('apel1Modificar').value="";
+                document.getElementById('apel2Modificar').value="";
+                document.getElementById('mailModificar').value="";
+                document.getElementById('formMod2').style.display="none";
+                document.getElementById('validarMod').style.display="block";
+                document.getElementById('modificarMod').style.display="none";
+            }
+            function volverMenu(){
+                document.getElementById('capaAlta').style.display="none";
+                document.getElementById('capaBotones').style.display="block";
+                document.getElementById('capaAltaPadre').style.display="none";
+                document.getElementById('consulta').style.display="none";
+                document.getElementById('bajas').style.display="none";
+                document.getElementById('modificar').style.display="none";
+            }
+            function formatoNif(nif){
+
+            letras=["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"];
+
+            var  num= nif.substring(0,8);
+            parseInt(num);
+            var  letra= nif.substring(8,9);
+            var x= num%23;
+            if(letra==letras[x]){
+                return true;
+            }
+            return false;
+            }
+            function validarNif(nif){
+          if(patron_nif.test(nif)){
+           return true;
+           }
+              return false;
+           }
+            function validarNombre(nom){
+              if (patron_nom.test(nom)){
+                    return true;
+              }
+              return false;
+            } 
+
+            function validarMail(mail){
+              if (patron_mail.test(mail)){
+                    return true;
+              }
+              return false;
+            }
+            //fin bloque utilidad
+            //bloque alta
+            //alta hijo
+            function darDeAlta(){
+                var existeTutor=false;
+                var existeHijo=false;
+                vNif=document.getElementById('nifAlta').value;
+                vNombre=document.getElementById('nombreAlta').value;
+                vApel1=document.getElementById('apel1Alta').value;
+                vApel2=document.getElementById('apel2Alta').value;
+                vNifTutor=document.getElementById('nifTutorAlta').value;
+                var y;
+                for(x=0;x<padres.length;x++){
+                    if(vNifTutor==padres[x].nif){
+                        y=x;
+                        existeTutor=true;
+                        x=padres.length;
+                    }
+                }
+                for(x=0;x<hijos.length;x++){
+                    if(vNif==hijos[x].nif){
+                        existeHijo=true;
+                        x=hijos.length;
+                    }
+                }
+
+                
+                    if(existeHijo==false){
+                        if(validarNif(vNif)){
+                            if(formatoNif(vNif)){
+                                if(validarNombre(vNombre)){
+                                    if(validarNombre(vApel1)){
+                                        if(validarNombre(vApel2)){
+                                            if(existeTutor==true){
+        
+
+
+                                                
+                                                hijo=new Object();
+
+                                                hijo={
+                                                    'nif':vNif, 
+                                                    'nombre':vNombre, 
+                                                    'apel1': vApel1,
+                                                    'apel2': vApel2,
+                                                    'nifTutor': vNifTutor
+                                                }
+
+                                                hijos.push(hijo);
+                                                alert("Hijo registrado correctamente");  
+                                                volverMenu(); 
+                                            
+                                            }else{
+                                                alert("El Tutor no esta dado de alta");
+                                                var opcion=confirm("Quieres darlo de alta?");
+
+                                                if(opcion==true){
+                                                    mostrarAltaPadre();
+                                                }else{
+                                                    return;
+                                                }
+
+
+                                            }
+                                                }else{
+                                                    alert("el sesundo apellido no cumple patron correcto");
+                                                    document.getElementById('apel2Alta').value="";
+                                        document.getElementById('apel2Alta').focus();
+                                                }
+                                            }else{
+                                                alert("el primer apellido no cumple patron correcto");
+                                                document.getElementById('apel1Alta').value="";
+                                        document.getElementById('apel1Alta').focus();
+                                            }
+                                            
+                                        }else{
+                                            alert("el nombre no cumple patron correcto");
+                                            document.getElementById('nombreAlta').value="";
+                                        document.getElementById('nombreAlta').focus();
+                                        }
+                                        }else{
+                                            alert("La letra no le corresponde a este nif");
+                                            document.getElementById('nifAlta').value="";
+                                            document.getElementById('nifAlta').focus();
+                                        }
+                                    }else{
+                                        alert("el nif no cumple patron correcto");
+                                        document.getElementById('nifAlta').value="";
+                                        document.getElementById('nifAlta').focus();
+                                    }
+                                                
+                                            }else{
+                                                alert("El hijo ya esta registrado");
+                                            document.getElementById('nifAlta').value="";
+                                        document.getElementById('nombreAlta').value="";
+                                            document.getElementById('apel1Alta').value="";
+                                            document.getElementById('apel2Alta').value="";
+                                            document.getElementById('nifTutorAlta').value="";
+                                            document.getElementById('nifAlta').focus();
+                                            }
+                                            
+                                        }
+            //fin alta hijo
+         
+            //alta padre
+            function darDeAltaPadre(){
+                var existe=false;
+                vNif=document.getElementById('nifAltaPadre').value;
+                vNombre=document.getElementById('nombreAltaPadre').value;
+                vApel1=document.getElementById('apel1AltaPadre').value;
+                vApel2=document.getElementById('apel2AltaPadre').value;
+                vMail=document.getElementById('mailAltaPadre').value;
+
+                for(x=0;x<padres.length;x++){
+                    if(vNif==padres[x].nif){
+                        existe=true;
+                        x=padres.length;
+                    }
+                }
+
+                if(existe==false){
+                    if(validarNif(vNif)){
+                        if(formatoNif(vNif)){
+                      if(validarNombre(vNombre)){
+                       if(validarNombre(vApel1)){
+                        if(validarNombre(vApel2)){
+                            if(validarMail(vMail)){  
+                    padre=new Object();
+
+                    padre={
+                        'nif':vNif, 
+                        'nombre':vNombre, 
+                        'apel1': vApel1,
+                         'apel2': vApel2,
+                         'mail': vMail }
+                    
+                    padres.push(padre);
+                    alert("Padre registrado correctamente"); 
+                    volverMenu();  
+                    }else{
+                        alert("el mail no cumple patron correcto");
+                        document.getElementById('mailAltaPadre').value="";
+            document.getElementById('mailAltaPadre').focus();
+                    }
+
+                    }else{
+                        alert("el segundo apellido no cumple patron correcto");
+                        document.getElementById('apel2AltaPadre').value="";
+            document.getElementById('apel2AltaPadre').focus();
+                    }
+                }else{
+                    alert("el primer apellido no cumple patron correcto");
+                    document.getElementById('apel1AltaPadre').value="";
+            document.getElementById('apel1AltaPadre').focus();
+                }
+            }else{
+                alert("el nombre no cumple patron correcto");
+                document.getElementById('nombreAltaPadre').value="";
+            document.getElementById('nombreAltaPadre').focus();
+            }
+        }else{
+            alert("Esta letra no le corresponde a este nif");
+            document.getElementById('nifAltaPadre').value="";
+            document.getElementById('nifAltaPadre').focus();
+        }
+        }else{
+            alert("el nif no cumple patron correcto");
+            document.getElementById('nifAltaPadre').value="";
+            document.getElementById('nifAltaPadre').focus();
+        }
+                }else{
+                    alert("EL padre ya existe");
+                    document.getElementById('nifAltaPadre').value="";
+               document.getElementById('nombreAltaPadre').value="";
+                document.getElementById('apel1AltaPadre').value="";
+                document.getElementById('apel2AltaPadre').value="";
+                document.getElementById('mailPadre').value="";
+                document.getElementById('nifAltaPadre').focus();
+                }
+            }
+            //fin alta padre
+            //fin bloque alta
+            //bloque consulta
+            function consultar(){
+                visualizarDatos="<table border='1' class='tabla'>"+
+                "<th>NIF</th>"+
+                "<th>Nombre</th>"+
+                "<th>Apel1</th>"+
+                "<th>Apel2</th>"+
+                "<th>Nif Tutor</th>";
+                nombre=document.getElementById('nombreConsulta').value;
+                apel1=document.getElementById('apel1Consulta').value;
+                apel2=document.getElementById('apel2Consulta').value;
+                var existe=false;
+                var hijo=false;
+                var y;
+                var z;
+
+                
+                for(x=0;x<padres.length;x++){
+                   if(nombre==padres[x].nombre){
+                        if(apel1==padres[x].apel1){
+                            if(apel2==padres[x].apel2){
+                                existe=true;
+                                y=x;
+                                x=padres.length;
+                            }
+                        }
+                   }
+                }
+                if(existe){
+                    for(x=0;x<hijos.length;x++){
+                        if(padres[y].nif==hijos[x].nifTutor){
+                            visualizarDatos+= "<tr>"+
+                                "<td>"+hijos[x].nif+"</td>"+
+                                "<td>"+hijos[x].nombre+"</td>"+
+                                "<td>"+hijos[x].apel1+"</td>"+
+                                "<td>"+hijos[x].apel2+"</td>"+
+                                "<td>"+hijos[x].nifTutor+"</td>"+
+                                "</tr>";
+                        }
+                    }
+                    visualizarDatos+="</table>";
+                    document.getElementById("datos").innerHTML=visualizarDatos;
+                }else{
+                    alert("El padre introducido no es correcto");
+                    document.getElementById('nombreConsulta').value="";
+                    document.getElementById('apel1Consulta').value="";
+                    document.getElementById('apel2Consulta').value="";
+                    document.getElementById('nombreConsulta').focus();
+                }
+            }
+            //fin bloque consulta
+            //bloque baja
+            function mostrarAlumno(){
+                visualizarDatos="<table border='1' class='tabla'>"+
+                "<th>NIF</th>"+
+                "<th>Nombre</th>"+
+                "<th>Apel1</th>"+
+                "<th>Apel2</th>"+
+                "<th>Nif Tutor</th>";
+                nif=document.getElementById("nifBaja").value;
+                encontrado=false;
+                for(x=0;x<hijos.length;x++){
+                    if(nif==hijos[x].nif){
+                        encontrado=true;
+                        y=x;
+                        x=padres.length;
+                    }
+                }
+                if(encontrado){ 
+                    visualizarDatos+= "<tr>"+
+                                "<td>"+hijos[y].nif+"</td>"+
+                                "<td>"+hijos[y].nombre+"</td>"+
+                                "<td>"+hijos[y].apel1+"</td>"+
+                                "<td>"+hijos[y].apel2+"</td>"+
+                                "<td>"+hijos[y].nifTutor+"</td>"+
+                                "</tr>"+"</table>";
+                    document.getElementById('mostrarBaja').style.display="none";
+                    document.getElementById("darDeBajaAlumno").style.display="block"
+                    document.getElementById('datosBajaAlumno').innerHTML=visualizarDatos;
+                }else{
+                    alert("el alumno no existe");
+                }
+            }
+            function darDeBaja(){
+                nif= document.getElementById("nifBaja").value;
+                encontrado=false;
+                var y=0,z=0;
+                for(x=0;x<hijos.length;x++){
+                    if(nif==hijos[x].nif){
+                        encontrado=true;
+                        y=x;
+                        x=padres.length;
+                    }
+                }
+                if(encontrado){
+                    for(x=0;x<padres.length;x++){
+                        if(hijos[y].nifTutor==padres[x].nif){
+                            z=x;
+                            x=padres.length;
+                        }
+                    }
+                    alert(padres[z].nif);
+                    var opcion=confirm("¿Estas seguro de eliminar este alumno?");
+                    if(opcion){
+                    hijos.splice(y,1);
+                   
+                    alert("el Alumno ha sido eliminado");
+                    if(padres[z].nHijos==1){
+                        padres.splice(z,1);
+                        alert("El tutor de este alumno no tiene mas hijos, por lo tanto queda eliminado");
+                    }
+                }else{
+                    return;
+                }
+                   
+                }
+            }
+            //fin bloque baja
+            //bloque modificar
+            var a;
+            function validarPadre(){
+                nif=document.getElementById('nifModificar').value;
+                encontrado=false;
+                for(x=0;x<padres.length;x++){
+                    if(nif==padres[x].nif){ 
+                        a=x;
+                        encontrado=true;
+                        x=padres.length;
+
+                    }   
+                }
+                if(encontrado){
+                    alert("Tutor encontrado");
+                    document.getElementById('formMod2').style.display="block";
+                    document.getElementById('validarMod').style.display="none";
+                    document.getElementById('modificarMod').style.display="block";
+                }else{
+                    alert("No existe el tutor");
+                }
+            }
+            function modifcarPadre(){
+                vNif=document.getElementById('nifModificar').value;
+                vNombre=document.getElementById('nombreModificar').value;
+                vApel1=document.getElementById('apel1Modificar').value;
+                vApel2=document.getElementById('apel2Modificar').value;
+                vMail=document.getElementById('mailModificar').value;
+               encontrado=false;
+            
+                if(validarNif(vNif)){
+                    if(formatoNif(vNif)){
+                        if(validarNombre(vNombre)){
+                            if(validarNombre(vApel1)){
+                                if(validarNombre(vApel2)){
+                                    if(validarMail(vMail)){
+                                        var opcion=confirm("¿Esta seguro del cambio?");
+                                        if(opcion){
+                                            for(x=0;x<hijos.length;x++){
+                                        if(hijos[x].nifTutor==padres[a].nif){
+                                             hijos[x].nifTutor=vNif;
+                                            }
+                                        }
+                                            padres[a].nif=vNif;
+                                            padres[a].nombre=vNombre;
+                                            padres[a].apel1=vApel1;
+                                            padres[a].apel2=vApel2;
+                                            padres[a].mail=vMail;
+                                            
+                                     
+                                        alert("Datos modificados");
+
+                                        }else{
+                                            return;
+                                        }
+                                    }else{
+                                        alert("Mail no valido");
+                                        document.getElementById('mailModificar').value="";
+                    document.getElementById('mailModificar').focus();
+                                    }
+                                }else{
+                                    alert("2. Apellido no valido");
+                                document.getElementById('apel2Modificar').value="";
+                    document.getElementById('apel1Modificar').focus();
+                                }
+                            }else{
+                                alert("1. Apellido no valido");
+                                document.getElementById('apel1Modificar').value="";
+                    document.getElementById('apel1Modificar').focus();
+                            }
+                        }else{
+                            alert("Nombre no valido");
+                            document.getElementById('nombreModificar').value="";
+                    document.getElementById('nombreModificar').focus();
+                        }
+                    }else{
+                        alert("La letra del nif no es la que corresponde");
+                        document.getElementById('nifModificar').value="";
+                    document.getElementById('nifModificar').focus();
+                    }
+                }else{
+                    alert("Patron de nif incorrecto");
+                    document.getElementById('nifModificar').value="";
+                    document.getElementById('nifModificar').focus();
+                }
+            }
+            //fin bloque modificar
+
+        </script>
+
+    </body>
+</html>

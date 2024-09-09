@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    
+    <script>
+ 
+        function mostrar(cadena){ //funcion que muestra las capas.
+            
+            if(cadena=='capa3'){
+            document.getElementById('capa3').style.display='block';  
+            document.getElementById('capa2').style.display='none';  
+            document.getElementById('capa1').style.display='none';  
+            }else if(cadena=='capa2'){
+            document.getElementById('capa2').style.display='block'; 
+        document.getElementById('capa1').style.display='none';  
+        document.getElementById('capa3').style.display='none';   
+            }else{
+                document.getElementById('capa1').style.display='block';  
+        document.getElementById('capa3').style.display='none';  
+            document.getElementById('capa2').style.display='none';
+
+            }
+        }
+    
+        </script>
+
+    <input type="button" name="b1" id="b1" value="Azul" onclick="mostrar('capa3')">
+    <input type="button" name="b2" id="b2" value="Verde" onclick="mostrar('capa2')">
+    <input type="button" name="b3" id="b3" value="Rojo" onclick="mostrar('capa1')">
+<br> <br>
+
+    <div id="capa1" style="display: none; width: 100vh; height:50vh; background-color: red;">
+       
+    </div>
+    <div id="capa2" style="display: none; width: 100vh; height:50vh; background-color: green; ">
+        
+    </div>
+    <div id="capa3" style="display: none; width: 100vh; height:50vh; background-color: blue;">
+        
+        
+    </div>
+
+   
+
+</body>
+
+
+    
+   
+
+</html>

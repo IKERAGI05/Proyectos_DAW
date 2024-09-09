@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>
+	<script >
+		var nombre;
+		nombre=prompt('Indica tu nombre'); //pedimos el nombre.
+
+		while(nombre.length==0){ 
+
+			nombre=prompt('El nombre no puede ser nulo, por favor introduzcalo de manera correcta'); //Abrimos un bloque while para que se repita el 
+																									// error mientras el nombre sea nulo.
+
+		}
+			alert('Buenos dias'+ ' '+ nombre + ', ' + 'bienvenido'); //visualizamos en modo alert la bienvenida cuando el campo deja de ser nulo.
+		
+
+		document.write('Buenos dias',' ',nombre, ', ', 'Bienvenido'); //visualizamos la bienvenida en la pagina.
+		
+
+
+	</script>
+	</p>
+
+</body>
+</html>

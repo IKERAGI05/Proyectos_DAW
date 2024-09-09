@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+		var dia;
+		var num, numdia;
+		var resultado;
+		var asignaturas= ['Despliegue-->8:00-9:00','Despliegue-->9:00-10:00','Despliegue-->10:00-11:00',
+		'Dcliente-->11:30-12:30','Dcliente-->12:30-13:30','Diseño-->13:30-14:30','Dservidor-->8:00-9:00',
+		'Dservidor-->9:00-10:00','Dcliente-->10:00-11:00','Dcliente-->11:30-12:30','Dservidor-->12:30-13:30',
+		'Dservidor-->13:30-14:30','Dcliente-->8:00-9:00','Dcliente-->9:00-10:00','Dcliente-->10:00-11:00',
+		'Diseño-->11:30-12:30','Diseño-->12:30-13:30','Diseño-->13:30-14:30','Empresa-->8:00-9:00',
+		'Empresa-->9:00-10:00','Empresa-->10:00-11:00','Dservidor-->11:30-12:30','Dservidor-->12:30-13:30',
+		'Dservidor-->13:30-14:30','Despliegue-->8:00-9:00','Despliegue-->9:00-10:00','Dservidor-->10:00-11:00',
+		'Dservidor-->11:30-12:30','Diseño-->12:30-13:30','Diseño-->13:30-14:30'];
+
+		dia=prompt('Introduzca un dia lectivo de la semana');
+		num=prompt('Introduzca una hora del 1-6');
+
+		
+
+		while(dia.length==0||num.length==0){
+			alert('El dia o la hora no puede ser nulos');
+			dia=prompt('Introduzca un dia lectivo de la semana');
+			num=prompt('Introduzca una hora del 1-6');
+
+	
+		}
+		while(dia.toLowerCase()!='lunes'&&dia.toLowerCase()!='martes'
+			&&dia.toLowerCase()!='miercoles'&&dia.toLowerCase()!='jueves'&&dia.toLowerCase()!='viernes'){
+
+			alert('El dia no es lectivo o no existe');
+			dia=prompt('Introduzca un dia lectivo de la semana');
+
+
+		}
+
+		while(isNaN(num)||num<1||num>6){
+			alert('La hora debe ser un valor numerico del 1 al 6');
+
+			num=prompt('Introduzca una hora del 1-6');
+
+		}
+		if(dia.toLowerCase()=='lunes'){
+
+			numdia=0;
+		}else if(dia.toLowerCase()=='martes'){
+			numdia=6;
+		}else if(dia.toLowerCase()=='miercoles'){
+			numdia=12;
+		}else if(dia.toLowerCase()=='jueves'){
+			numdia=18;
+		}else {
+			numdia=24;
+		}
+		
+		var x;
+		x=parseInt(num)+parseInt(numdia);
+		alert(asignaturas[x-1]);
+		
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

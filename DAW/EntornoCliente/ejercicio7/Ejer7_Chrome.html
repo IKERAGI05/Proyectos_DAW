@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+
+    <body>
+
+        <script>
+            var empleados=[{'id':'12345678H','nombre': 'Juan', 'apel1':'Garcia', 'apel2':'Gomez', 'edad': 45},
+            {'id':'14567832D','nombre': 'Ander', 'apel1':'Apoita', 'apel2':'Liaño', 'edad': 22},
+            {'id':'38954239J','nombre': 'Josu', 'apel1':'De Andres', 'apel2':'Cuadrado', 'edad': 17}];
+            var existe;
+
+          /*  for(y=0; y<empleados.length;y++){
+                document.write(empleados[y].id +"; ");
+                document.write(empleados[y].nombre +"; ");
+                document.write(empleados[y].apel1 +"; ");
+                document.write(empleados[y].apel2+ "; " );
+                document.write(empleados[y].edad+ "; " );
+                document.write("<br>");
+
+            }*/
+
+          var idComprobar= prompt("Introduzca el id del empleado");
+            idComprobar=idComprobar.trim();
+            
+            while(idComprobar.length!=9){
+                alert("El id debe de conetener 9 caracteres");
+
+            idComprobar= prompt("Introduzca el id del empleado");
+            idComprobar=idComprobar.trim();
+
+
+            }
+            
+
+            var x=0;
+
+           
+                
+            for(x=0;x<empleados.length&&!existe;x++){ //Comprueba si el id del empleado esta almacenado.
+
+                if(empleados[x].id==idComprobar){
+                   
+                    existe=true;
+                   
+
+                }
+                    
+                
+                
+            }
+
+            
+
+            while(!existe){ // En caso de que no este almacenado, volvemos a pedir que se introduzca el id.
+                alert("empleado inexistente."); 
+            idComprobar= prompt("Introduzca el id del empleado");
+            idComprobar=idComprobar.trim();
+
+            for(x=0;x<empleados.length&&!existe;x++){// y vuelve a comprobar si esta almacenado.
+
+            if(empleados[x].id==idComprobar){
+   
+             existe=true;
+                
+
+            }
+ 
+         }
+
+        }
+         if(existe){ // cuando acabe el bucle del while, significa que lo ha encontrado y muestra por pantalla el id y la nueva edad.
+             x=x-1;
+                alert("Empleado encontrado, con edad: " + empleados[x].edad);
+
+            empleados[x].edad= prompt("Introduzca la edad nueva");
+
+            document.write("empleado con id : " + empleados[x].id);
+            document.write("<br>");
+            document.write("Nueva edad: " + empleados[x].edad);
+
+         }
+
+
+          
+
+            
+
+            
+
+
+
+        </script>
+
+    </body>
+</html>

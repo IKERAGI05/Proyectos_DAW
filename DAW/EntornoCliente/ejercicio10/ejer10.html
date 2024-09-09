@@ -1,0 +1,89 @@
+<body>
+    <script type="text/javascript">
+        var nif, nombre, apel1, apel2, correcto=true;
+       
+
+      var patron_textos=/^[A-Z][a-z]{1,24}$/;
+      var patron_nif= /^[0-9]{8}[A-Z]$/;
+      
+
+      
+        function validarTextos(cadena){
+
+       if(!patron_textos.test(cadena)){ //validación de los nombre y apellidos
+       	
+    		return false;
+
+       	}
+       	return true;
+       }
+       function validarNif(nif){ //Validación del nif
+        if(!patron_nif.test(nif)){
+       	
+           return false;
+
+          }
+          return true;
+      }
+   		function mostrar(){
+        nif= prompt("Introduzca el nif del empleado");
+        while(validarNif(nif)==false){  //controlamos todos los campos con las funciones de validar.
+   				alert("El nif es incorrecto");
+                nif= prompt("Introduzca el nif del empleado");
+        }
+   		nombre=prompt("Introduzca el nombre del empleado");
+           while(validarTextos(nombre)==false){
+   				alert("El nombre es incorrecto");
+                nombre= prompt("Introduzca el nombre del empleado");
+        }
+        apel1=prompt("Introduzca el primer apellido del empleado");
+        while(validarTextos(apel1)==false){
+   				alert("El primer apellido es incorrecto");
+                apel1= prompt("Introduzca el primer apellido del empleado");
+        }
+        apel2=prompt("Introduzca el segundo apellido del empleado");
+        while(validarTextos(apel2)==false){
+   				alert("El segundo apellido es incorrecto");
+                apel2= prompt("Introduzca el segundo apellido del empleado");
+        }
+        //una vez validados mostramos el formulario y que los campos se rellenen con lo introducido
+
+            document.getElementById('capa').style.display="block";
+                document.getElementById('nif').value= nif;
+                document.getElementById('nombre').value= nombre;
+                document.getElementById('apel1').value= apel1;
+                document.getElementById('apel2').value= apel2;
+
+       
+    }
+       
+    </script>
+
+    <form>
+
+        <div id="capa" style="border-style: solid; border-color: black; width: 40vw; height: 40vh;margin-left: 25vw; display: none;">
+            <p style="margin-left: 8vw;">
+            NIF: <input type="text" name="nif"  id="nif"
+            style="margin-left:1.6vw; margin-top:5vh;">
+            <br><br>
+            NOMBRE: <input type="text" name="nombre"  id="nombre"
+            >
+            <br><br>
+            APELLIDO 1: <input type="text" name="ape1" id="apel1">
+            <br><br>
+            APELLIDO 2: <input type="text" name="ape2" id="apel2">
+            <br><br>
+            <input type="button" name="registrar" value="registrar"
+            style="margin-left: 10vw;">
+            </p>
+
+        </div>
+
+
+    </form>
+    <script>mostrar(); //llamo al método que contiene todo el proceso.</script>
+   
+ 
+
+
+</body>

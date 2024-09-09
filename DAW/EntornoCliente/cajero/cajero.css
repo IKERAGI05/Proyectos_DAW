@@ -1,0 +1,208 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .row{
+    margin-top: 3%;
+  }
+.logo{
+    width: 10%;
+    height: 20vh;
+    color: white;
+    margin-top: 0%;
+}
+.titulo{
+    margin-left: 5%;
+}
+.tit-bank{
+    margin-left: 20%;
+    font-size: 300%;
+    margin-top: 3%;
+    color: white;
+}
+.encabezado{
+    width: auto;
+    height: 20vh;
+    background: rgb(202, 38, 112);
+}
+
+.btn-light{
+    width: 7vh;
+    height: 7vh;
+    background-color: lightgray;
+}
+.form-label{
+    margin-left: 15%;
+    font-weight: bold;
+}
+.capaInput{
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 0%;
+}
+.fila{
+    margin-top: 1%;
+}
+.capaIR{
+    margin-left: 38.5%;
+    margin-top: 2%;
+}
+.capaTeclado{
+    border-radius: 5%;
+    background: lightgrey;
+    width: 21%;
+    height: 30vh;
+    margin-left: 37%;
+    display: none;
+
+}
+.capaBotonesDinero{
+    margin-left: 20%;
+}
+.capa-switch{
+    margin-left: 5%;
+    margin-top: 15%;
+    width: 70%;
+
+}
+.miSaldo{
+  margin-left: 30%;
+  margin-top: 2%;
+  display: none;
+}
+.cardSaldo{
+  width: 50%;
+  height: 50vh;
+  background: rgb(202, 38, 112);
+  color: white;
+  border-radius: 10%;
+  font-size: 300%;
+  font-weight: bold;
+}
+.comienzo{
+   color: rgb(202, 38, 112);
+   animation: move linear 5s infinite;
+   font-size: 150%;
+  
+   
+}
+@keyframes move {
+   0% {
+        filter: hue-rotate(0deg);
+   }
+   100% {
+        filter: hue-rotate(360deg);
+   }
+  }
+
+.form-check-input:checked{
+    background-color: rgb(202, 38, 112);
+}
+
+
+
+
+/* CSS */
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 25%;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    rgb(90, 26, 55) 0%,
+    rgb(202, 38, 112) 8%,
+    rgb(202, 38, 112) 92%,
+    rgb(90, 26, 55) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: rgb(202, 38, 112);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}

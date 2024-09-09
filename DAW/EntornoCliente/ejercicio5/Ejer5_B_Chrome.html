@@ -1,0 +1,92 @@
+<html>
+<header>
+</header>
+<body>
+    <script>
+        var pares=[];
+        var impares=[];
+        var num;
+
+        for(x=0;x<10;x++){ //bucle para pedir 10 números.    
+            num=prompt("Introduzca 1 numero del 1-20");
+           
+           
+            while(num<1||num>20){
+                alert("el numero debe estar entre el 1 y el 20"); //controlamos que el número este entre el 1 y el 20
+                num=prompt("Introduzca 1 numero del 1-20");
+               
+              
+            }
+            while(num.length==0||isNaN(num)){ //controlamos que no este vacio y sea númerico.
+                alert("El valor introducido deber ser númerico y no puede estar vacio.");
+                num=prompt("Introduzca 1 numero del 1-20");
+                
+                
+
+            }
+            num=num.trim();
+            num=parseInt(num);
+
+            if(num%2==0){
+                pares.push(num); //si es par lo introducimos en el array de pares.
+            }else{
+                impares.push(num);//si es impar lo introducimos en el array de impares.
+            }
+            
+
+        }
+
+        var aux;
+        for(j=0; j<pares.length;j++){
+        for(i=0; i<pares.length-j;i++){
+            if(pares[i]>pares[i+1]){
+                aux=pares[i+1];
+                pares[i+1]=pares[i];
+                pares[i]=aux;
+
+            }
+
+        }
+    }
+    for(j=0; j<impares.length;j++){
+        for(i=0; i<impares.length-j;i++){
+            if(impares[i]>impares[i+1]){
+                aux=impares[i+1];
+                impares[i+1]=impares[i];
+                impares[i]=aux;
+
+            }
+
+        }
+    }
+
+
+        document.write("numeros pares: " );
+        for(y=0;y<pares.length;y++){
+            if(y==pares.length-1){
+                document.write(pares[y] + "<br>"); //recorremos el array de pares para visualizarlo.
+            
+            }else{
+                document.write(pares[y] + ", ");
+            }
+        }
+        document.write("numeros impares: ");
+        for(y=0;y<impares.length;y++){ //recorremos el array de impares para visualizarlo.
+            if(y==impares.length-1){
+                document.write(impares[y] + "<br>");
+            
+            }else{
+                document.write(impares[y] + ", ");
+                
+            }
+        }
+
+       
+       
+
+    </script>
+
+</body>
+
+
+</html>

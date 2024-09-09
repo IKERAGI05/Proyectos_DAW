@@ -1,0 +1,94 @@
+<html>
+
+<header></header>
+<body>
+    <script>
+       
+        var n=0;
+        var empleados=[];
+
+        do{
+
+            var empleado=new Object(); //inicializamos objeto
+
+            empleado.id= prompt("introduzca el id del empleado");
+            empleado.id= empleado.id.trim();
+            //Comienzo bloque control del id
+            while(empleado.id.length<9||empleado.id.length>9){
+                alert("El id debe ser de 9 caracteres");
+                empleado.id= prompt("introduzca el id del empleado");
+                empleado.id= empleado.id.trim();
+            }
+            for(x=0;x<empleados.length;x++){
+                while(empleados[x].id==empleado.id){
+                   
+                    alert("el empleado introducido existe");
+                    empleado.id= prompt("Introduce el id del empleado");
+                    empleado.id= empleado.id.trim();
+                    x=0;
+
+                }
+
+            }
+            //fin bloque control del id
+           
+            empleado.nombre= prompt("introduzca el nombre del empleado");
+            empleado.nombre= empleado.nombre.trim();
+                //Comienzo bloque control nombre
+                while(empleado.nombre.length<2||!isNaN(empleado.nombre)){
+                    alert("El nombre debe contener al menos 2 caracteres y no ser númerico");
+                    empleado.nombre= prompt("introduzca el nombre del empleado");
+                    empleado.nombre= empleado.nombre.trim();
+                }
+                //Fin bloque control nombre
+
+                empleado.apel1=prompt("introduzca el 1.apellido del empleado");
+                empleado.apel1= empleado.apel1.trim();
+        //Comienzo bloque control apel1
+             while(empleado.apel1.length<2||!isNaN(empleado.apel1)){
+                    alert("El 1. apellido debe contener al menos 2 caracteres");
+                   empleado.apel1= prompt("introduzca el 1.apellido del empleado");
+                   empleado.nombre= empleado.apel1.trim();
+                }
+        //Fin bloque control apel1
+            empleado.apel2= prompt("introduzca el 2.apellido del empleado");
+            empleado.apel2= empleado.apel2.trim();
+
+            //Comienzo bloque control apel2 
+                while(empleado.apel2.length<2||!isNaN(empleado.apel2)){
+                    alert("El 2. apellido debe contener al menos 2 caracteres");
+                    empleado.apel2=prompt("introduzca el 2.apellido del empleado");
+                    empleado.apel2= empleado.apel2.trim();
+                }
+
+            //Fin bloque control apel2
+
+          
+
+            empleados.push(empleado); 
+            n++;
+            
+
+
+    }while(n<2);
+
+    for(y=0; y<empleados.length;y++){
+        document.write(empleados[y].id +"; ");
+        document.write(empleados[y].nombre +"; ");
+        document.write(empleados[y].apel1 +"; ");
+        document.write(empleados[y].apel2 );
+        document.write("<br>");
+        
+
+    }
+
+
+
+        
+
+
+
+    </script>
+
+</body>
+</html>

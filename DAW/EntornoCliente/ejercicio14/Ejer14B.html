@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            html{
+                background-color: lightgrey;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script> 
+        function volver(){
+            location.href="Ejer14.html";
+            localStorage.clear();
+
+        }
+        var nombre= localStorage.getItem("nombre");
+        
+
+        document.write("Bienvenido " + nombre );
+
+        
+            
+        </script>
+        <br><br>
+        <form>
+            <input type="button" name="b" id="b" value="Volver" onclick="volver()" style="border-radius: 1vh; border-color: #1A73E8; background-color:
+            #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;"">
+        </form>
+
+    </body>
+
+</html>

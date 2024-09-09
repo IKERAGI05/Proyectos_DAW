@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+
+    #b1{
+        display: inline;
+        margin-left: 50vh;
+        color: white;
+        background-color: #4472C4;
+        height: 5vh;
+        border-color: #4472C4;
+    }
+    #b2{
+        display: inline;
+        margin-left: 10vh;
+        color: white;
+        background-color: #4472C4;
+        height: 5vh;
+        border-color: #4472C4;
+    }
+    .textos{
+        margin-left: 35vh;
+    }
+    #t2{
+        font-size: 5vh;
+    }
+    .imagenes{
+        margin-left: 5vh;
+        
+
+    }
+
+</style>
+
+<head></head>
+
+<body>
+
+        <script>
+            var dato;
+            
+            function visualizar(){ 
+                dato= document.getElementById('t1').value;
+
+                document.getElementById('t1').disabled=true;
+
+                document.getElementById('t2').value= "El dato introducido es de tipo";
+                dato=dato.trim();
+
+                
+                if(isNaN(dato)){ //pregunto si no es numero entonces visualizo la foto String
+
+                document.getElementById('img3').style.display="inline";
+                }else  if(dato%2==0){ //en caso de ser pregunto si es par
+                    document.getElementById('img2').style.display="inline";
+                }else{
+                    document.getElementById('img1').style.display="inline";
+
+                }
+                if(dato.length==0){
+                    alert("Campo vacio");
+                    borrar();
+                }
+                
+
+            }
+
+            function borrar(){ //funcion en la que restablezco el formulario.
+                document.getElementById('img2').style.display="none";
+                document.getElementById('img1').style.display="none";
+                document.getElementById('img3').style.display="none";
+                document.getElementById('t2').value="";
+                document.getElementById('t1').value="";
+                document.getElementById('t1').disabled=false;
+                document.getElementById('t1').focus();
+                
+
+            }
+            
+
+        </script>
+
+
+    <h1 align="center">Introduzca cualquier valor</h1> <br> <br>
+
+    <input type="text" name="texto1" class="textos" id="t1"> <br> <br>
+
+    <textarea cols="10" rows="3" name="texto2" id="t2" class="textos" disabled></textarea>
+    <div id="img1" class="imagenes" style="display: none;">
+    <img width="100vh" src="Impar.PNG">
+    </div>
+    <div id="img2" class="imagenes" style="display: none;">
+    <img width="100vh" src="par.PNG">
+    </div>
+    <div id="img3" class="imagenes" style="display: none;">
+    <img width="100vh" src="String.PNG">
+    </div>
+     <br> <br>
+
+    <div id="capaBotones">
+    <input type="button" name="b1" id="b1" value="Comprobar dato" onclick="visualizar()"> 
+    <input type="reset" name="b2" id="b2" value="Probar con otro dato" onclick="borrar()">
+    </div>
+</body>
+</html>

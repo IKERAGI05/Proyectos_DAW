@@ -1,0 +1,39 @@
+<body>
+
+    <script type="text/javascript">
+        var nombre, apel1, apel2;
+
+      
+
+        function mensaje(){
+         nombre=document.getElementById('nombre').value;
+        apel1=document.getElementById('apel1').value;
+        apel2=document.getElementById('apel2').value;
+            document.write("Bienvenido " + nombre +" " + apel1+ " "+ apel2);
+        }
+    </script>
+
+    <form>
+
+        <div style="border-style: solid; border-color: black; width: 40vw; height: 40vh;margin-left: 25vw;">
+            <p style="margin-left: 8vw;">
+            NOMBRE: <input type="text" name="nombre"  id="nombre"
+            style="margin-left:1.6vw; margin-top:10vh;">
+            <br><br>
+            APELLIDO 1: <input type="text" name="ape1" id="apel1">
+            <br><br>
+            APELLIDO 2: <input type="text" name="ape2" id="apel2">
+            <br><br>
+            <input type="button" name="registrar" value="registrar" onclick="mensaje();" 
+            style="margin-left: 10vw;">
+            </p>
+
+        </div>
+
+
+    </form>
+
+ 
+
+
+</body>

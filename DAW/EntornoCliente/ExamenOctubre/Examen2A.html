@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            html{
+                background-color: lightgrey;
+            }
+            .textos{
+                height: 4vh;
+                border-radius: 1vh;
+                border-color: white;
+            
+                
+            }
+            .labels{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            }
+        </style>
+    </head>
+<body>
+
+    <div style="margin-left: 60vh;">
+    <form>
+        <fieldset style="width: 70vh; height: 45vh;">
+            <div style="margin-top: 5vh; margin-left: 20vh;">
+            <span class="labels">NIF:</span><br> <input type="text" name="nif" id="nif" class="textos"> <br><br>
+            <span class="labels">CONTRASEÑA:</span> <br><input type="password" name="pass1" id="pass1" class="textos">
+            <br><br>
+            <span class="labels"> REPETIR CONTRASEÑA:</span> <input type="password" name="pass2" id="pass2" class="textos"> 
+            <br><br>
+            <input type="button" name="iniciar" value="Iniciar Sesion" onclick="comprobar()" 
+            style="margin-top: 1vh; margin-left: 6vh; border-radius: 1vh; border-color: #1A73E8; background-color:
+             #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" >
+            
+            </div>
+        </fieldset>
+
+    </form>
+</div>
+<script>
+   abrirVentana(); //abrimos la ventana para poder cerrarla.
+   var patron_nif= /^[0-9]{8}[A-Z]$/;// patron del nif
+    var correcto= false;
+    var usuarios=[{'id': '1', 'nif': '12345678H', 'pass': '12345'}, //array de usuarios validos
+    {'id': '2', 'nif': '87654321L', 'pass': '54321'},
+    {'id': '3', 'nif': '12345678A', 'pass': '678910'}];
+
+    function validarNif(nif){ //funcion para validar el nif
+        if(!patron_nif.test(nif)){
+           
+            return false;
+        }
+
+        return true;
+        
+
+    }
+   
+    function comprobar(){ //funcion en la que comprobamos si el nif y las contraseñas estan registradas.
+        
+        var nif= document.getElementById('nif').value;
+        var pass1= document.getElementById('pass1').value;
+        var pass2= document.getElementById('pass2').value;
+      
+        for(x=0;x<usuarios.length&&!correcto;x++){
+            if(validarNif(nif)){
+            if(usuarios[x].nif==nif){
+                if(usuarios[x].pass==pass1){
+                    if(pass1==pass2){
+                    correcto=true;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+        if(correcto){ // en caso de ser correctos lo avisamos y pasamos a la siguiente página
+            alert("Datos correctos");
+            location.href="Examen2B.html";
+            document.getElementById('nif').value="";
+            document.getElementById('pass1').value="";
+            
+
+        }else{ //en caso de que no lo sean cerramos la ventana
+            alert("NIF o contraseña incorrectos");
+            
+            document.getElementById('nif').value="";
+            document.getElementById('pass1').value="";
+            document.getElementById('pass2').value="";
+            cerrarVentana();
+            
+        }
+    }
+    function abrirVentana(){ //función para abrir la ventana
+        window.open();
+    }
+    function cerrarVentana(){//función para cerrar la ventana
+        window.close();
+    }
+
+    
+</script>
+</body>
+</html>

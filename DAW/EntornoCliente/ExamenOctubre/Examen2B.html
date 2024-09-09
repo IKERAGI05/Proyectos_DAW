@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            html{
+                background-color: lightgrey;
+            }
+            .textos{
+                height: 4vh;
+                border-radius: 1vh;
+                border-color: white;
+            
+                
+            }
+            .labels{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div style="margin-left: 60vh;">
+            <form>
+                <fieldset style="width: 70vh; height: 55vh;">
+                    <div style="margin-top: 5vh; margin-left: 20vh;">
+                    <span class="labels">OP1:</span><br> <input type="number" name="op1" id="op1" class="textos"> <br><br>
+                    <span class="labels">OP2:</span> <br><input type="number" name="op2" id="op2" class="textos">
+                    <br><br>
+                    <span class="labels"> OPERACIÓN:</span> <select id="operacion">
+                        <option value="+" selected>+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                    <br><br>
+                    <span class="labels">RESULTADO:</span>  <input type="text" name="rsto" id="rsto" class="textos" disabled style="margin-top: 2vh;">
+                    <br><br>
+                    <input type="button" name="volver" value="Volver" onclick="vuelta()" 
+                    style="margin-top: 1vh; margin-left: 1vh; border-radius: 1vh; border-color: #1A73E8; background-color:
+                     #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" >
+                    <input type="button" name="iniciar" value="Operar" onclick="seleccion()" 
+                    style="margin-top: 1vh; margin-left: 2vh; border-radius: 1vh; border-color: #1A73E8; background-color:
+                     #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" >
+                    <input type="reset" name="reiniciar" value="Reset" onclick="resetear()" 
+                    style="margin-top: 1vh; margin-left: 1vh; border-radius: 1vh; border-color: #1A73E8; background-color:
+                     #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" >
+                     
+                  
+                    </div>
+                </fieldset>
+        
+            </form>
+
+            <script>
+                
+                
+                var infinito=false;
+                var letra= false;
+
+                function seleccion(){ //función en la que inicializo las variables para operar
+                    var operacion= document.getElementById('operacion').value;
+                    var n1=document.getElementById('op1').value;
+                var n2=document.getElementById('op2').value;
+                    calcular(n1,n2,operacion);// llamo a la funcion que calcula
+                }
+
+                function calcular(n1,n2,operacion){ // funcion en la que valido los campos y realizo las operaciones.
+                    
+
+                n1= parseFloat(n1); // parseos para poder operar
+                n2=parseFloat(n2);
+                if(isNaN(n1)||isNaN(n2)){ 
+                    letra=true;
+                }
+                if(!letra){ 
+                    switch(operacion){ // bloque de control para las operaciones
+                        case "+": document.getElementById('rsto').value= n1+n2;
+                        break;
+                        case "-": document.getElementById('rsto').value= n1-n2;
+                        break;
+                        case "*": document.getElementById('rsto').value= n1*n2;
+                        break;
+                        case "/": 
+                        if(n2==0){ //en caso de que dividamos y el divisor sea 0 
+                            infinito=true;
+                        }
+                        if(!infinito){ //en caso de que sea correcto mostramos el resultado
+                        document.getElementById('rsto').value= n1/n2;
+                        }else{// mostraremos un mensaje de que no se puede dividir por 0 
+                            alert('No se puede dividir por 0');
+                            document.getElementById('rsto').value="No se puede dividir por 0";
+                            resetear();
+                        }
+                        break;
+
+                    }
+
+                }else{// en caso de que los operandos sean letras mostramos el mensaje.
+                    alert("Los operandos deben ser numericos");
+                    document.getElementById('rsto').value="Los operandos deben ser numericos";
+                    resetear();
+                }
+            }
+            
+
+                function vuelta(){ //funcion para volver a la pagina anterior
+                    location.href="Examen2A.html";
+                }
+                function resetear(){ //funcion para resetear los campos.
+                    document.getElementById('op1').value="";
+                document.getElementById('op2').value="";
+                //document.getElementById('rsto').value="";
+                document.getElementById('op1').focus();
+                }
+
+            </script>
+
+
+    </body>
+</html>

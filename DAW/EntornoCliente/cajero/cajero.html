@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="cajero.css">
+        <link rel="stylesheet" href="jquery.toast.css">
+        <link href="jquery.alertable.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script> 
+        <script src="jquery-3.6.1.min.js"></script>
+        <script src="jquery.toast.js"></script>
+        <script src="jquery.alertable.min.js"></script>
+
+
+        <div class="encabezado">
+            <div class="titulo">
+                <img class="logo" src="banco.png">
+                <label class="tit-bank"><b>LIBERTY BANK</b></label>
+            </div>
+          </div>
+     <div class="pantalla">
+        <div class="capaInput">
+            <form>
+                <div class="form-check form-switch capa-switch">
+                    <label class="comienzo"><b>¡Pulsa el boton para comenzar!</b></label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="bSwitch" style="height: 8vh; width:18vh; margin-left: 15%; margin-top: 10%;">                   
+                  </div>
+                    <div class="mb-3 capaTarjeta" style="display: none;">
+                        <label class="form-label">Nº Tarjeta</label>
+                    <input type="number" id="nTarjeta" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3 capaPin" style="display: none;">
+                        <label class="form-label">PIN</label>
+                    <input type="password" id="pin" class="form-control" style="-webkit-text-security: square;" maxlength="4" disabled>
+                    </div>
+                    <div class="capaTitu" style="display: none;">
+                        <label id="titular"> </label>
+                        
+                    </div>
+                    <div class="mb-3 capaDni" style="display: none;" disabled>
+                        <label class="form-label">DNI</label>
+                        <input type="number" id="nif" class="form-control" >
+                    </div>
+           
+            </form>
+        </div>
+        <div class="capaBotonesDinero" style="display: none;">
+            <div id="titBotones" style="margin-left:26.3%; font-size: 200%; font-weight: bold;"></div>
+            <div style="margin-left: 60%; display: inline;"><button type="button" id="bVolverDinero" class="btn btn-danger">Volver</button><button type="button" id="bRIDinero" class="btn btn-success" style="margin-left: 5%;"></button></div>
+              <div class="row">
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b10Euros" value="10" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          10€
+                        </span>
+                      </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b100Euros" value="100" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          100€
+                        </span>
+                      </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b20Euros" value="20" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          20€
+                        </span>
+                      </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b150Euros" value="150" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          150€
+                        </span>
+                      </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b50Euros" value="50" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          50€
+                        </span>
+                      </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="button-82-pushable" id="b200Euros" value="200" style="margin-left: 1%;">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                          200€
+                        </span>
+                      </button>
+                </div>
+            </div>
+            
+             <div style="margin-left:30%; font-size: 200%; font-weight: bold;"><label id="saldo">0€</label></div>
+          </div>
+          
+          <div class="miSaldo">
+            <div><button type="button" id="bVolverSaldo" class="btn btn-danger" style="margin-left: 55%; margin-top: 2%; ">Volver</button></div>
+              <div class="cardSaldo">
+
+                <div style="margin-left:2%;"><label id="labelFecha" style="font-size:40%;"></label>&nbsp;<label>TU SALDO</label>&nbsp;<label id="labelHora" style="font-size:40%;"></label></div>
+                <div id="labelSaldo" style="margin-left: 25%; margin-top: 20%;"></div> 
+              </div>
+          </div>
+          <div class="modal" id="miModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="tituloModal"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cuerpoModal">
+      
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="background-color: rgb(202, 38, 112);">Aceptar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="capaIR" style="display: none;">
+            <div class="row">
+               <button type="button" class="button-82-pushable" id="bRetirada" style="margin-left: 1%;">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                  RETIRAR
+                </span>
+              </button>
+            
+              </div>
+              <div class="row">
+                <button type="button" class="button-82-pushable" id="bIngreso" style="margin-left: 1%;">
+                 <span class="button-82-shadow"></span>
+                 <span class="button-82-edge"></span>
+                 <span class="button-82-front text">
+                   INGRESAR
+                 </span>
+               </button>
+            
+               </div>
+              <div class="row">
+               <button type="button" class="button-82-pushable" id="bMiSaldo" style="margin-left: 1%;">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                  MI SALDO
+                </span>
+              </button>
+            
+              </div>
+              <div class="row">
+              <button type="button" class="button-82-pushable" id="bSalir" style="margin-left: 1%;">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                  SALIR
+                </span>
+              </button>
+              </div>
+        </div>
+        
+    </div>
+    
+    <div class="capaTeclado">
+        <div class="fila"> 
+            <button type="button" id="b1" class="btn btn-light">1</button>
+            <button type="button" id="b2" class="btn btn-light">2</button>
+            <button type="button" id="b3" class="btn btn-light">3</button>
+            <button type="button" id="bCancelar" class="btn btn-outline-danger">CANCELAR</button>
+        </div>
+     
+        <div class="fila"> 
+            <button type="button" id="b4" class="btn btn-light">4</button>
+            <button type="button" id="b5" class="btn btn-light">5</button>
+            <button type="button" id="b6" class="btn btn-light">6</button>
+            <button type="button" id="bCorregir" class="btn btn-outline-warning">CORREGIR</button>
+        </div>
+        <div class="fila">
+            <button type="button" id="b7" class="btn btn-light">7</button>
+            <button type="button" id="b8" class="btn btn-light">8</button>
+            <button type="button" id="b9" class="btn btn-light">9</button>
+            <button type="button" id="bContinuar" class="btn btn-outline-success">CONTINUAR</button>
+        </div>
+        <div class="fila">
+            <button type="button" class="btn btn-light">.</button>
+            <button id="b0" type="button" class="btn btn-light">0</button>
+            <button type="button" class="btn btn-light">.</button>
+            <button type="button" id="bVacio" class="btn btn-outline-dark"></button>
+        </div>
+    </div>
+    <script src="cajero.js"></script>
+    </body>
+</html>

@@ -1,0 +1,323 @@
+.base{
+    width: 90%; 
+    display: absolute;
+    height: 75vh; 
+    border-radius: 23%;
+    margin-left: 5%;
+    margin-top: 4%;
+    background: rgb(76, 76, 74);
+ 
+}
+.carreteraC{
+    color: white;
+    width: auto; 
+    height: 65vh; 
+    border: 50px solid rgb(0, 0, 0);
+    border-radius: 22% ;
+
+
+}
+.carreteraH{
+    color: white;
+    width: 100.5%;
+    height: 9vh;
+    margin-left: -6%;
+    background: black;
+    position: absolute;
+    margin-top: 11%;
+
+}
+.carreteraH2{
+    color: white;
+    width: 100.5%;
+    height: 9vh ;
+    margin-left: -6%;
+    background: black;
+    position: absolute;
+    margin-top: 25%;
+}
+.carreteraV{
+    color: white;
+    position: absolute;
+    margin-top: -4%;
+    width: 9vh;
+    height: 97.5vh;
+    background: black;
+    margin-left: 25%;
+
+}
+.carreteraV2{
+    color: white;
+    position: absolute;
+    margin-top: -4%;
+    width: 9vh;
+    height: 97.5vh;
+    background: black;
+    margin-left: 58%;
+
+}
+.rectangulosVPrim{
+
+    width: 15%;
+    height: 3vh;
+    margin-left: 42%;
+    margin-top: 15%;
+    background: white;
+}
+.triangulosVPrim{
+
+    width: 0; 
+    height: 0; 
+    margin-left: 31%;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    transform: rotate(90deg);
+
+}
+
+.rectangulosV{
+
+    width: 15%;
+    height: 3vh;
+    margin-left: 42%;
+    margin-top: 400%;
+    background: white;
+}
+.triangulosV{
+
+    width: 0; 
+    height: 0; 
+    margin-left: 30.8%;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    transform: rotate(90deg);
+
+}
+.rectangulosV2Prim{
+    width: 15%;
+    height: 3vh;
+    margin-left: 41.4%;
+    
+    background: white;
+
+}
+.triangulosV2Prim{
+
+    width: 0; 
+    height: 0; 
+    margin-top: 15%;
+    margin-left: 31%;
+   
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    transform: rotate(-90deg);
+
+}
+.triangulosV2{
+    width: 0; 
+    height: 0; 
+    margin-left: 30.8%;
+    margin-top: 190%;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    transform: rotate(-90deg);
+
+}
+.rectangulosV2{
+    width: 15%;
+    height: 3vh;
+    margin-left: 42%;
+    background: white;
+}
+.rectangulosHPrim{
+    width: 2%;
+    height: 1.5vh;
+    position: relative;
+    float: left;
+    margin-left: 0%;
+    margin-top: 2.1%;
+    background: white;
+}
+.triangulosHPrim{
+    width: 0; 
+    height: 0; 
+    margin-left: 0%;
+    margin-top: 1.7%;
+    position: relative;
+    float: left;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+}
+.rectangulosH{
+    width: 2%;
+    height: 1.5vh;
+    position: relative;
+    float: left;
+    margin-left: 20%;
+    margin-top: 2.1%;
+    background: white;
+}
+.triangulosH{
+    width: 0; 
+    height: 0; 
+    margin-left: 0%;
+    margin-top: 1.7%;
+    position: relative;
+    float: left;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+}
+.triangulosH2Prim{
+
+    width: 0; 
+    height: 0; 
+    margin-left: 0%;
+    margin-top: 1.7%;
+    position: relative;
+    float: left;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    transform: rotate(-180deg);
+
+}
+.rectangulosH2Prim{
+    width: 2%;
+    height: 1.5vh;
+    position: relative;
+    float: left;
+    margin-left: 0%;
+    margin-top: 2.1%;
+    background: white;
+}
+.triangulosH2{
+    width: 0; 
+    height: 0; 
+    margin-left: 21%;
+    margin-top: 1.7%;
+    position: relative;
+    float: left;
+    border-left: 20px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-180deg);
+    
+}
+.rectangulosH2{
+    width: 2%;
+    height: 1.5vh;
+    position: relative;
+    float: left;
+    margin-left: 0%;
+    margin-top: 2.1%;
+    background: white;
+
+}
+
+.bpasoH{
+    width: 3%;
+    height: auto;
+    position: relative;
+    float: left;
+    margin-left: 22.5%;
+
+}
+.blanco{
+    width: auto;
+    height: 1.5vh;
+    background: white;
+}
+.transp{
+
+    width: auto;
+    height: 1.5vh;
+    background: transparent;
+
+}
+.bpasoV{
+    width: 70%;
+    height: 5vh;
+    position: relative;
+    float: left;
+    margin-top: 180%;
+    margin-left: 22%;
+    transform: rotate(90deg);
+}
+.claseSemaforo{
+    position:absolute;
+    width: 2vw;
+    height: 6vh;
+    background-color: rgb(47, 46, 46);
+    border-color: 2px solid black;
+    border-radius: 5%;
+   position: absolute;
+
+}
+.claseLuz{
+    width: 2vw;
+    height: 2vh;
+    /*border-top-right-radius: 5vw;
+    border-top-left-radius: 5vw;*/
+    border-radius: 50%;
+    background: grey;
+}
+
+.semaforoPeaton{
+    width: 4vh;
+    height: 3vh;
+    position: absolute;
+    
+}
+.cuadro{
+    width: auto;
+    height: 100%;
+    border:1.5px solid grey;
+    background: rgb(40, 39, 39);
+    
+}
+img{
+    object-fit: cover;
+    width:auto;
+    height:100%;
+    margin-left: 0.5vh;
+}
+#semaforo1{
+    margin-left: 22%;
+     margin-top: 14%;
+}
+.botonPeaton{
+    position: absolute;
+    width: 2%;
+    height: 3vh;
+    
+
+}
+.circuloBoton{
+    background:darkgreen;
+    width: 50%;
+    height: 2vh;
+    border-radius: 100%;
+}
+.circuloBoton:hover{
+        background: lightgreen;
+
+}
+.on-off{
+    width: 9%;
+    height: 5vh;
+    
+}
+.bgrupo2{
+    display: none;
+}
+.rojoPGrupo1,.rojoPGrupo2,.verdePGrupo1,.verdePGrupo2{
+    display: none;
+
+}

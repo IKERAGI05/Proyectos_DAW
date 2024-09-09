@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<head>
+    <link href="main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script src="jquery-3.6.1.min.js"></script>
+ 
+    
+    <div id="titulo" style="margin-left: 23%;">
+        <label class="tituloPrincipal"><b>PARKING ARENAL</b></label>
+    </div>
+    <div id="inicio">
+    <div id="ES" style="display: none; margin-left: 45%; margin-top: 2%; width:50%; height: 50%; position: absolute;">
+        <button type="button" name="entradas" class="btn btn-outline-success" id="bEntradas" style=" width: 35%; height: 20%;" disabled>ENTRADAS</button>
+        <button type="button" name="salidas" class="btn btn-outline-success" id="bSalidas" style=" width: 35%; height: 20%; margin-left: 10%;" disabled>SALIDAS</button>
+    </div>
+    <div id="contadorPlazas" style="display: none; position: absolute; margin-left: 45%; margin-top: 10%; width: 100%; height: 100%;">
+        <div style="width: 40%; height: 40%; background-color:#4062fc; border-radius: 10%;">
+        <div>
+        <label id="tContadorPlazas" style="font-size: 500%; color:white; margin-left: 35%; margin-top: 15%;"></label><br>
+        <label id="tPlazasLibres" style="color: white; margin-left: 39%; margin-top: 0%;"><b>Plazas libres</b></label>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div id="logoParking" style="margin-left: 10%; margin-top: 1%; position: absolute;">
+        <img src="parking.jpg">
+    </div>
+<div id="bCrud" style="display: none; margin-left: 11%; margin-top: 22%; position: absolute; width: 45%;">
+    <div style="margin-left: 8%; margin-top: 1%;">
+        <button type="button" name="ingresar" class="btn btn-outline-primary" id="bIngresar">INGRESAR</button>
+    </div>
+    <div style="margin-left: 0%; margin-top: 3%;">
+        <button type="button" class="btn btn-outline-success" id="bAltas"  style="margin-left: 1%; width: 15%;" disabled>ALTAS</button>
+        <button type="button" class="btn btn-outline-success" id="bBajas" style="margin-left: 2%; width: 15%;" disabled>BAJAS</button>
+    </div>
+
+</div>
+
+<div id="ingreso" style="display: none; margin-top: 7%; background-color: lightgrey;">
+    <div id="formIngreso">
+        <h3 class="titulos"><b>Ingreso</b></h3>
+    <form>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nifIngreso" placeholder="12345678A">
+            <label for="floatingInput">Nif</label>
+        </div>
+        <div class="form-floating mb-3" style="margin-top: 5%;">
+            <input type="password" class="form-control" id="passIngreso" placeholder="1234">
+            <label for="floatingInput">Pass</label>
+        </div>
+        <div style="margin-top: 6%;">
+            <button type="button" name="confIngreso" class="btn btn-primary btn-sm" id="confIngreso" style="margin-left: 5%;">Confirmar</button>
+            <button type="button" name="volverIngreso" class="btn btn-primary btn-sm" id="volverIngreso" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+        </div>
+    </form>
+    </div>
+</div>
+
+<div id="altasCoche">
+    <div id="formAltasCoche">
+        <h3 class="titulos" style="margin-left: 30%;"><b>Alta Coche</b></h3>
+        <form>
+            <div class="form-floating mb-3" style="margin-top: 5%;">
+                <input type="text" class="form-control" id="matricula" placeholder="1234-SDF" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Matricula</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="marca" placeholder="Ford" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Marca</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="modelo" placeholder="Kuga" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Modelo</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="color" class="form-control" id="color" placeholder="Kuga" style="width: 20%; margin-left:17%;">
+                <label style="margin-left:17%;">Color</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nifPropietario" placeholder="12345678A" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Nif Propietario</label>
+            </div>
+            <div>
+            <button type="button" class="btn btn-primary btn-sm" id="confAltasCoche" style="margin-left: 27%;">Confirmar</button>
+            <button type="button" class="btn btn-primary btn-sm" id="volverAltasCoche" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+<div id="altasPropietario">
+        <div id="formAltasPropietario">
+            <h3 class="titulos"><b>Alta Propietario</b></h3>
+            <form>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nifAltaP" placeholder="12345678A" style="width: 60%; margin-left:17%;">
+                    <label for="floatingInput" style="margin-left:17%;">Nif</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nombreAltaP" placeholder="Pablo" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="apel1AltaP" placeholder="Perez" style="width: 60%; margin-left:17%;">
+                    <label for="floatingInput" style="margin-left:17%;">1. Apellido</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="apel2AltaP" placeholder="Lopez" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">2. Apellido</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tlfAltaP" placeholder="666666666" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Telefono</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="mailAltaP" placeholder="1234-SDF" style="width: 60%; margin-left:17%;">
+                    <label for="floatingInput" style="margin-left:17%;">Mail</label>
+                </div>
+                <div style="margin-top: 2%;">
+                    <button type="button" name="confAltaP" class="btn btn-primary btn-sm" id="confAltasPropietario"  style="margin-left: 25%;">Confirmar</button>
+                    <button type="button" name="volverAltaP" class="btn btn-primary btn-sm" id="volverAltasPropietario" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<div id="bajas" style="display: none;">
+    <div id="formBajas">
+        <h3 class="titulos"><b>Dar De Baja</b></h3>
+        <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="matriculaBaja" placeholder="1234SDF" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Matricula</label>
+            </div>  
+            <div style="margin-top: 2%;">
+                <button type="button" name="confBajas" class="btn btn-primary btn-sm" id="confBajas"  style="margin-left: 30%;">Confirmar</button>
+                <button type="button" name="volverBajas" class="btn btn-primary btn-sm" id="volverBajas" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="entradas" style="display: none;">
+    <div id="formEntradas">
+        <h3 class="titulos"><b>Entrada Vehiculo</b></h3>
+        <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="matriculaEntrada" placeholder="1234SDF" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Matricula</label>
+            </div>  
+            <div style="margin-top: 2%;">
+                <button type="button" class="btn btn-primary btn-sm" id="confEntrada"  style="margin-left: 30%;">Confirmar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="volverEntrada" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="salidas" style="display: none;">
+    <div id="formSalidas">
+        <h3 class="titulos"><b>Salida Vehiculo</b></h3>
+        <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="matriculaSalida" placeholder="1234SDF" style="width: 60%; margin-left:17%;">
+                <label for="floatingInput" style="margin-left:17%;">Matricula</label>
+            </div>  
+            <div style="margin-top: 2%;">
+                <button type="button" name="confBajas" class="btn btn-primary btn-sm" id="confSalida"  style="margin-left: 30%;">Confirmar</button>
+                <button type="button" name="volverBajas" class="btn btn-primary btn-sm" id="volverBajas" onclick="volverMenu()" style="margin-left: 2%; background-color: #DC3545;">Volver</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="toast" class="avisos" role="alert" aria-live="assertive" aria-atomic="true" id="capaToastError" style="display:none; position: absolute; margin-left: 65%; margin-top: 0%;">
+    <div class="toast-header" style="background-color: white;">
+      <img src="exclamacion.png" class="rounded mr-2" alt="">
+      <strong class="mr-auto" style="color: #DC3545;">¡CUIDADO!</strong>
+    </div>
+    <div class="toast-body" id="textoToastError" style="color: white; background-color:  #DC3545;">
+     
+    </div>
+  </div>
+
+  <div class="toast" class="avisos" role="alert" aria-live="assertive" aria-atomic="true" id="capaToastInfo" style="display:none; position: absolute; margin-left: 65%; margin-top: 0%;">
+    <div class="toast-header" style="background-color: white; color: rgb(48, 95, 247);">
+      <img src="info.png" class="rounded mr-2" alt="">
+      <strong class="mr-auto">Info.</strong>
+    </div>
+    <div class="toast-body" id="textoToastInfo" style="color: white; background-color: rgb(48, 95, 247);">
+     
+    </div>
+  </div>
+<script src="main.js"></script>
+</body>
+</html>

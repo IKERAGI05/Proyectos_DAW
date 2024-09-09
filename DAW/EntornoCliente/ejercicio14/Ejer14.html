@@ -1,0 +1,97 @@
+<html>
+    <head></head>
+    <body>
+
+        <head>
+
+            <style>
+                html{
+                    background-color: lightgrey;
+                }
+                .textos{
+                    height: 4vh;
+                    border-radius: 1vh;
+                    border-color: white;
+                
+                    
+                }
+                .labels{
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+                }
+            </style>
+        </head>
+    <body>
+    
+        <div style="margin-left: 60vh;">
+        <form>
+            <fieldset style="width: 70vh; height: 45vh;">
+                <div style="margin-top: 5vh; margin-left: 20vh;">
+                <span class="labels">NIF:</span><br> <input autofocus type="text" name="nif" id="nif" class="textos" > <br><br>
+                <span class="labels">CONTRASEÑA:</span> <br><input type="password" name="pass" id="pass" class="textos">
+                <br><br>
+                <input type="button" name="iniciar" value="Iniciar Sesion" onclick="validar()" 
+                style="margin-top: 1vh; margin-left: 6vh; border-radius: 1vh; border-color: #1A73E8; background-color:
+                 #1A73E8; color: white; height: 5vh; width: 17vh; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" >
+                
+                </div>
+            </fieldset>
+    
+        </form>
+    </div>
+
+    <script>
+        var datos= [{'nif': '12345H', 'nombre': 'Jesus', 'pass': '123'},{'nif': '54321L', 'nombre': 'Ander', 'pass': '321'}];
+        var correctoNif=false;
+        var correctoPass=false;
+       
+
+        function validar(){
+
+            var nif= document.getElementById('nif').value;
+            var pass= document.getElementById('pass').value;
+        
+            var x,y;
+            for(x=0;x<datos.length;x++){ //bucle para comprobar si son correctos
+                if(nif==datos[x].nif){
+                    correctoNif=true;
+                    if(pass==datos[x].pass){
+                        correctoPass=true;
+                       
+                        y=x;//guardamos el indice del array
+                        x=datos.length;
+                    
+
+                    }
+                }
+
+
+            }
+
+            if(correctoNif&&correctoPass){ //si los 2 son correctos guardamos y pasamos a la segunda pagina
+                alert("datos recogidos correctamente");
+                localStorage.setItem("nombre", datos[y].nombre);
+                location.href="Ejer14B.html";
+                
+
+            }else if(!correctoNif){ // si el nif es incorrecto borramos todo y ponemos el focus en el nif y avisamos
+                alert("El nif no es correcto");
+                document.getElementById('nif').value="";
+                document.getElementById('pass').value="";
+                document.getElementById('nif').focus();
+
+
+
+            }else if(!correctoPass){ //si la contraseña es incorrecta borramos contraseña, focus en el campo y avisamos.
+                alert("La contraseña no es correcta");
+                document.getElementById('pass').value="";
+                document.getElementById('pass').focus();
+
+            }
+
+        }
+
+    </script>
+
+    </body>
+
+</html>

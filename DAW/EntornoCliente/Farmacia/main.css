@@ -1,0 +1,94 @@
+.titulo{
+
+    font-size: 400%;
+    font-family: "Grenze";
+    color: blueviolet;
+    font-style: bold;
+}
+.formlabels{
+
+    text-align: center;
+    font-style: bold;
+    width: 50%;
+    margin-left: 25%;
+}
+.tabla{
+
+    margin-top: 5%;
+    width: 80%;
+    height: 60%;
+    text-align: center;
+    background-color: lightgrey;
+
+}
+.fNegra{
+    background-color: black;
+    color: white;
+}
+.tit{
+    margin-left:30%; color:blueviolet; font-family: Grenze;
+}
+
+#inicioSesion{
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 30%;
+    height: 45%;
+   box-shadow: 0px 3px 10px grey;
+}
+#menu{
+    position: absolute;
+    display: none;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 30%;
+    height: 45%;
+    
+}
+#ventas{
+    position: absolute;
+    display: none;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 30%;
+    height: 45%;
+    box-shadow: 0px 3px 10px grey;
+}
+#compra{
+    position: absolute;
+    display: none;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 27%;
+    height: 23%;
+    box-shadow: 0px 3px 10px grey;
+}
+#modCompra{
+    position: absolute;
+    display: none;
+    margin-left: 50%;
+    margin-top: 10%;
+    width: 30%;
+    height: 55%;
+    box-shadow: 0px 3px 10px grey;
+}
+
+#altaCompra{
+    position: absolute;
+    display: none;
+    margin-left: 50%;
+    margin-top: 2%;
+    width: 30%;
+    height: 73%;
+    box-shadow: 0px 3px 10px grey;
+}
+
+#pedidos{
+    position: absolute;
+    display: none;
+    margin-left: 35%;
+    margin-top: 10%;
+    width: 70%;
+    height: 60%
+}
